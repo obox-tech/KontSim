@@ -1,0 +1,104 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper, 10pt]{report}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{german}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{nameref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage[gen]{eurosym}
+\usepackage{float}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\renewcommand{\chaptername}{}
+
+%\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhf{}
+\lhead{{\footnotesize \textnormal{Logistik Übung}}}
+\rhead{{\footnotesize \textnormal{Gruppe Nr. XX}}}
+\cfoot{{\footnotesize \textnormal{\thepage}}}
+%\lfoot{{\footnotesize \textnormal{xxx}}}
+\rfoot{{\footnotesize \textnormal{\today}}}
+
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+   }
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+{\noindent\Huge\bfseries KontSim}\\[2\baselineskip] % Title
+{\large *add LVA number-* - Gruppe XX - \textit{Sommersemester 2016}}\\[4\baselineskip] % Tagline or further description
+{\textsc{*author* - *mtr. number* \newline **, **}} % Author name
+\\ \\ \\ \\
+{Studienkennzahl 033 282}
+
+\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+{\includegraphics[width=0.5cm]{TU-Logo}\noindent \ \ Institut für***}\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
+%----------------------------------------------------------------------------------------
+%	BLANK DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\thispagestyle{empty} % Removes page numbers
+\titleGM % This command includes the title page
+\newpage
+
+\tableofcontents %inhaltsverzeichnis
+
+\listoffigures %abbildungsverzeichnis
+
+
+
+%---------------------------------------------------------------------------------------------------Vorwort------------------------------------------------------------------------------------------------
+\renewcommand{\thechapter}{}
+\chapter{Vorwort}
+\renewcommand{\thechapter}{1}
+%
+Sehr geehrte Damen und Herren, liebe Leser und Leserinnen!
+\\
+\\
+Das vorliegende Protkoll wurde im Rahmen der ...
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%												Arbeitspaket A
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\renewcommand{\thechapter}{}
+\chapter{...}
+\renewcommand{\thechapter}{2}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% *titel von thechapter wegen uebersicht*
+%
+\section{foo}
+
+\end{document}
