@@ -29,4 +29,6 @@ sys_tf
 
 sys_ss=ss(sys_tf);
 
+sys_ss
+
 %set(sys_ss,'statename', states)
