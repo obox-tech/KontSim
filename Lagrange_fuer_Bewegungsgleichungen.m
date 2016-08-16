@@ -1,12 +1,12 @@
 syms l1 l2 phi_1 phi_2 phi_p1 phi_p2 phi_pp1 phi_pp2
-syms y y_p y_pp mm m1 m2 g I_1 I_2
+syms a a_p a_pp mm m1 m2 g I_1 I_2 F
 
 frg=3;                                     %Anzahl der Freiheitsgrade
 n=3;                                       %Anzahl der Koerper
 
-q=[y ; phi_1 ; phi_2];                     %Minimalkoordinaten
-q_p=[y_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
-q_pp=[y_pp ; phi_pp1 ; phi_pp2];
+q=[a ; phi_1 ; phi_2];                     %Minimalkoordinaten
+q_p=[a_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
+q_pp=[a_pp ; phi_pp1 ; phi_pp2];
 
 %---- Drehmatrix Stab 1
 T_IK1 = [cos(phi_1) sin(phi_1) 0;
@@ -18,9 +18,9 @@ T_IK2 = [cos(phi_2) sin(phi_2) 0;
               0          0     1];
 
 %---- Ortsvektoren
-I_r_Sm = [y;0;0];
-I_r_S1 = [y+l1/2*sin(phi_1) ; l1/2*cos(phi_1) ; 0];
-I_r_Q2 = [y+l1*sin(phi_1) ; l1*cos(phi_1) ; 0];
+I_r_Sm = [a;0;0];
+I_r_S1 = [a+l1/2*sin(phi_1) ; l1/2*cos(phi_1) ; 0];
+I_r_Q2 = [a+l1*sin(phi_1) ; l1*cos(phi_1) ; 0];
 K1_r_Q1S1 = [0; l1/2; 0];
 K2_r_Q2S2 = [0; l2/2; 0];
 I_r_S2 = I_r_Q2 + T_IK2 * K2_r_Q2S2;
@@ -48,9 +48,9 @@ I_v_S1 = J_T1*q_p ;
 I_v_S2 = J_T2*q_p ;
 
 %---- kinetische Energie
-T= 1/2*(mm*(I_v_Sm.'*I_v_Sm)+m1*(I_v_S1.'*I_v_S1)+m2*(I_v_S2.'*I_v_S2) ...%Translation
+T = 1/2*(mm*(I_v_Sm.'*I_v_Sm)+m1*(I_v_S1.'*I_v_S1)+m2*(I_v_S2.'*I_v_S2) ...%Translation
     +K_om1.'*K1_I_S1*K_om1+K_om2.'*K2_I_S2*K_om2);           %Rotation
-T=simplify(T);                                             %Vereinfachung
+T = simplify(T);                                             %Vereinfachung
 
 %---- potentielle Energie
 V=-(m1*I_r_S1.'+m2*I_r_S2.')*[0 ; -g ; 0];
@@ -64,5 +64,38 @@ dVdq = simplify(jacobian(V,q).');
 disp('System-Massenmatrix M')
 M = simplify(jacobian(dTdv,q_p))
 disp('System-Vektorfunktion f')
-f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq)
+f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0])
 
+%==========================================================================
+%---- Linearisierung um die Gleichgewichtslage:
+%     phi_1 = 0, phi_2 = 0, a = 0
+
+disp(' ')
+disp('Elemente der linearisierten Bewegungsgleichung')
+disp('System-Massenmatrix M0')
+M0 = subs(M,{phi_1, phi_2, a},{0, 0, 0})
+f0 = subs(f,{a, phi_1, phi_2, a_p, ...
+    phi_p1, phi_p2},{0, 0, 0, 0, 0, 0});
+disp('geschw.-proportionaler Anteil')
+Q = subs(jacobian(f,q),{a, phi_1, phi_2, a_p, ...
+    phi_p1, phi_p2},{0, 0, 0, 0, 0, 0})
+disp('Steifigkeitsmatrix K')
+K = 1/2*(Q+Q.')
+disp('Matrix der nichtkonservativen Kräfte')
+N = 1/2*(Q-Q.')
+
+%==========================================================================
+%----Erstellen und Loesen des Gleichungssystems
+syms x th1 th2 x_p th1_p th2_p
+syms x_pp th1_pp th2_pp
+
+y = [x ; th1 ; th2];
+y_p = [x_p ; th1_p ; th2_p];
+y_pp = [x_pp ; th1_pp ; th2_pp];
+
+disp(' ')
+disp('Gleichungssystem')
+DGL = M0*y_pp+K*y-[F;0;0]
+
+disp('Explizite darstellung')
+DGL_explizit = solve(DGL==[0;0;0],[x_pp, th1_pp, th2_pp])
