@@ -76,26 +76,70 @@ disp('System-Massenmatrix M0')
 M0 = subs(M,{phi_1, phi_2, a},{0, 0, 0})
 f0 = subs(f,{a, phi_1, phi_2, a_p, ...
     phi_p1, phi_p2},{0, 0, 0, 0, 0, 0});
-disp('geschw.-proportionaler Anteil')
+disp('Auslenkungs-proportionaler Anteil')
 Q = subs(jacobian(f,q),{a, phi_1, phi_2, a_p, ...
     phi_p1, phi_p2},{0, 0, 0, 0, 0, 0})
 disp('Steifigkeitsmatrix K')
 K = 1/2*(Q+Q.')
 disp('Matrix der nichtkonservativen Kräfte')
 N = 1/2*(Q-Q.')
+disp('gesschw.-proportionaler Anteil')
+P = subs(jacobian(f,q_p),{a, phi_1, phi_2, a_p, ...
+    phi_p1, phi_p2},{0, 0, 0, 0, 0, 0})
+disp('Daempfungsmatrix')
+D = 1/2*(P+P.')
+disp('gyroskopischer Anteil')
+G = 1/2*(P-P.')
 
 %==========================================================================
-%----Erstellen und Loesen des Gleichungssystems
+%----Erstellen und Simulieren der Zustandsraumdarstellung
+% ohne Integral
 syms x th1 th2 x_p th1_p th2_p
 syms x_pp th1_pp th2_pp
 
-y = [x ; th1 ; th2];
-y_p = [x_p ; th1_p ; th2_p];
-y_pp = [x_pp ; th1_pp ; th2_pp];
+y = [q.',q_p.'].';
+y_p = [q_p.',x_pp , th1_pp , th2_pp].';
 
-disp(' ')
-disp('Gleichungssystem')
-DGL = M0*y_pp+K*y-[F;0;0]
+A = [zeros(3),eye(3);
+    -M0^(-1)*Q, -M0^(-1)*P];
+A = double(subs(A,{mm, m1, m2, l1, l2, g, I_1, I_2}, ...
+    {0.2, 0.01, 0.01, 0.5, 0.7, 9.81, 2.0833e-04, 4.0833e-04}))
 
-disp('Explizite darstellung')
-DGL_explizit = solve(DGL==[0;0;0],[x_pp, th1_pp, th2_pp])
+B = [zeros(3,1);M0^(-1)*[1;0;0]];
+B = double(subs(B,{mm, m1, m2, l1, l2, g, I_1, I_2}, ...
+    {0.2, 0.01, 0.01, 0.5, 0.7, 9.81, 2.0833e-04, 4.0833e-04}))
+
+C = [1 0 0 0 0 0;
+   0 1 0 0 0 0;
+   0 0 1 0 0 0]
+
+D = [0; 0; 0]
+
+
+Q=eye(6);
+r=1;
+
+k = lqr(A,B,Q,r)
+
+Ac = [(A-B*k)];
+Bc = [B];
+Cc = [C];
+Dc = [D];
+
+states = {'x' 'th1' 'th2' 'x_p' 'th1_p' 'th2_p'};
+inputs = {'F'};
+outputs = {'x' 'th1' 'th2'};
+
+sys_cl = ss(Ac,Bc,Cc,Dc,'statename',states,'inputname',inputs,'outputname',outputs);
+
+t = 0:0.01:5;
+F =0.2*ones(size(t));
+[y,t,x]=lsim(sys_cl,F,t);
+[AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
+hold on
+line(t,y(:,3),'parent',AX(2),'color','g')
+hold off
+set(get(AX(1),'Ylabel'),'String','cart position (m)')
+set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
+title('Step Response with LQR Control')
+
