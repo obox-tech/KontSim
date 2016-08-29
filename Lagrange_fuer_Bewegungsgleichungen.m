@@ -1,5 +1,7 @@
+%---- Ermitteln der Bewegungsgleichungen
+%     definieren der Systemvariablen
 syms l1 l2 phi_1 phi_2 phi_p1 phi_p2 phi_pp1 phi_pp2
-syms a a_p a_pp mm m1 m2 g I_1 I_2 F
+syms a a_p a_pp mm m1 m2 g I_1 I_2 F xc
 
 frg=3;                                     %Anzahl der Freiheitsgrade
 n=3;                                       %Anzahl der Koerper
@@ -93,7 +95,6 @@ G = 1/2*(P-P.')
 
 %==========================================================================
 %----Erstellen und Simulieren der Zustandsraumdarstellung
-% ohne Integral
 syms x th1 th2 x_p th1_p th2_p
 syms x_pp th1_pp th2_pp
 
@@ -103,38 +104,52 @@ y_p = [q_p.',x_pp , th1_pp , th2_pp].';
 A = [zeros(3),eye(3);
     -M0^(-1)*Q, -M0^(-1)*P];
 A = double(subs(A,{mm, m1, m2, l1, l2, g, I_1, I_2}, ...
-    {0.2, 0.01, 0.01, 0.5, 0.7, 9.81, 2.0833e-04, 4.0833e-04}))
+    {0.2, 0.01, 0.01, 0.5, 0.7, 9.81, 2.0833e-04, 4.0833e-04}));
+A(7,7) = 0;
+A(7,1) = -1
 
 B = [zeros(3,1);M0^(-1)*[1;0;0]];
 B = double(subs(B,{mm, m1, m2, l1, l2, g, I_1, I_2}, ...
-    {0.2, 0.01, 0.01, 0.5, 0.7, 9.81, 2.0833e-04, 4.0833e-04}))
+    {0.2, 0.01, 0.01, 0.5, 0.7, 9.81, 2.0833e-04, 4.0833e-04}));
+B(7,1) = 0
+Bxc = [0; 0; 0; 0; 0; 0; 1]
 
-C = [1 0 0 0 0 0;
-   0 1 0 0 0 0;
-   0 0 1 0 0 0]
+C = [1 0 0 0 0 0 0;
+   0 1 0 0 0 0 0;
+   0 0 1 0 0 0 0]
 
 D = [0; 0; 0]
 
 
-Q=eye(6);
+Q=eye(7);
 r=1;
 
+%----lqr Regelungsentwurf
 k = lqr(A,B,Q,r)
 
+%----neue Zustandsraumsystemmatrizen nach Parameterruekfuehrung
 Ac = [(A-B*k)];
-Bc = [B];
+Bc = [Bxc];
 Cc = [C];
 Dc = [D];
 
-states = {'x' 'th1' 'th2' 'x_p' 'th1_p' 'th2_p'};
+states = {'x' 'th1' 'th2' 'x_p' 'th1_p' 'th2_p' 'in'};
 inputs = {'F'};
 outputs = {'x' 'th1' 'th2'};
 
 sys_cl = ss(Ac,Bc,Cc,Dc,'statename',states,'inputname',inputs,'outputname',outputs);
 
-t = 0:0.01:5;
-F =0.2*ones(size(t));
-[y,t,x]=lsim(sys_cl,F,t);
+%----definieren des Simulationszeitraums
+t = 0:0.01:8;
+
+%----definition des konstanten 0.2m offsets als Input
+u =0.2*ones(size(t));
+
+%----Simulation des erstellten Systems ueber gegebene Zeit mit bekanntem
+%Input
+[y,t,x]=lsim(sys_cl,u,t);
+
+%----Plotten der Ausgangsgroessen
 [AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
 hold on
 line(t,y(:,3),'parent',AX(2),'color','g')
