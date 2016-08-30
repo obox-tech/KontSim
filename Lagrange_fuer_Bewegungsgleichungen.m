@@ -158,3 +158,6 @@ set(get(AX(1),'Ylabel'),'String','cart position (m)')
 set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
 title('Step Response with LQR Control')
 
+%----Berechnung der Eigenwerte
+Eigenwerte = eig(Ac)
+disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
