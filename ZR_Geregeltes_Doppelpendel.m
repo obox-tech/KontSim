@@ -44,6 +44,7 @@ sys_ss=ss(A,B,C,D,'statename', states, 'inputname' , inputs, 'outputname' , outp
 Q=eye(7);
 r=1;
 
+
 k = lqr(A,B,Q,r)
 
 Ac = [(A-B*k)];
