@@ -149,14 +149,31 @@ u =0.2*ones(size(t));
 %Input
 [y,t,x]=lsim(sys_cl,u,t);
 
+
+%----Drei einzelne Diagramme in einem Fenster
+figure(1);
+ax(1) = subplot(3,1,1);
+    plot(ax(1),t,y(:,1),'b');
+    title(ax(1),'cart position');     %Titel, Beschriftungen, Kommentare,
+    ylim([-0.1,0.25]);                %andere Farben, andere skalierungen,
+    grid on                           %da kann man sich noch frei austoben.
+ax(2) = subplot(3,1,2);               %relativ einfach verstaendliche 
+    plot(ax(2),t,y(:,2),'r');         %loesung. Ws nicht Laufzeit optimiert
+    title(ax(2),'angle theta 1');
+    grid on
+ax(3) = subplot(3,1,3);
+    plot(ax(3),t,y(:,3),'g');
+    title(ax(3),'angle theta 2');
+    grid on
+
 %----Plotten der Ausgangsgroessen
-[AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
-hold on
-line(t,y(:,3),'parent',AX(2),'color','g')
-hold off
-set(get(AX(1),'Ylabel'),'String','cart position (m)')
-set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
-title('Step Response with LQR Control')
+% [AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
+% hold on
+% line(t,y(:,3),'parent',AX(2),'color','g')
+% hold off
+% set(get(AX(1),'Ylabel'),'String','cart position (m)')
+% set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
+% title('Step Response with LQR Control')
 
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)
