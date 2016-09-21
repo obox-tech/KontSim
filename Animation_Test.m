@@ -140,7 +140,7 @@ outputs = {'x' 'th1' 'th2'};
 sys_cl = ss(Ac,Bc,Cc,Dc,'statename',states,'inputname',inputs,'outputname',outputs);
 
 %----definieren des Simulationszeitraums
-t = 0:0.05:8;
+t = 0:0.01:8;
 
 %----definition des konstanten 0.2m offsets als Input
 u =0.2*ones(size(t));
@@ -178,7 +178,6 @@ u =0.2*ones(size(t));
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)
 disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
-
 
 
 
