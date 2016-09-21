@@ -140,7 +140,7 @@ outputs = {'x' 'th1' 'th2'};
 sys_cl = ss(Ac,Bc,Cc,Dc,'statename',states,'inputname',inputs,'outputname',outputs);
 
 %----definieren des Simulationszeitraums
-t = 0:0.01:8;
+t = 0:0.05:8;
 
 %----definition des konstanten 0.2m offsets als Input
 u =0.2*ones(size(t));
@@ -184,7 +184,7 @@ disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
 
 %Animation
 axis(gca,'equal');
-axis([-2.0 2.0 -0.1 2.0]);
+axis([-1.0 1.0 -0.1 1.5]);
 grid on;
 
 
