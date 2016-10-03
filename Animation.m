@@ -1,8 +1,9 @@
 function Animation(y,t)
 
 %Animation
+figure('position',[0 0 1280 720]);
 axis(gca,'equal');
-axis([-1.0 1.0 -0.1 1.5]);
+axis([-1.0 1.0 0.0 1.5]);
 grid on;
 
 
@@ -41,6 +42,17 @@ for i=1:length(t)
           
 end
 
-movie(mov,1,200);
+%movie(mov,1,200);
+%movie2avi(mov,'testanimation3.avi')
+v=VideoWriter('testanimation4');
+v.FrameRate = 50;
+v.Quality = 100;
+open(v);
+writeVideo(v,mov);
+close(v);
+
+
+
+
 
 end
