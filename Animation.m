@@ -1,9 +1,14 @@
 function Animation(y,t)
 
 %Animation
-figure('position',[0 0 1280 720]);
+figure('position',[0 0 1000 700]);
 axis(gca,'equal');
 axis([-1.0 1.0 0.0 1.5]);
+ax = gca;
+ax.Units = 'pixels';
+pos = ax.Position;
+marg = 30;
+rect = [-marg, -marg, pos(3)+2*marg, pos(4)+2*marg];
 grid on;
 
 
@@ -29,7 +34,7 @@ for i=1:length(t)
     %Time interval to update the plot
     %pause(0.001);
     
-    mov(i)=getframe;
+    mov(i)=getframe(gcf);
     
     %Delete previous objects
     if i<length(t)
@@ -50,9 +55,6 @@ v.Quality = 100;
 open(v);
 writeVideo(v,mov);
 close(v);
-
-
-
 
 
 end
