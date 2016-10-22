@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2016/dev) (preloaded format=pdflatex 2016.10.22)  22 OCT 2016 18:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2016/dev) (preloaded format=pdflatex 2016.10.22)  22 OCT 2016 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -818,7 +818,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--73
 
  []
 
-<TU-Logo.png, id=36, 123.0999pt x 123.0999pt>
+<TU-Logo.png, id=40, 123.0999pt x 123.0999pt>
 File: TU-Logo.png Graphic file (type png)
  <use TU-Logo.png>
 Package pdftex.def Info: TU-Logo.png used on input line 73.
@@ -884,7 +884,7 @@ mit den angegebe-
 
 ]
  .
-<Modell_Doppelpendel.PNG, id=81, 434.37282pt x 311.66437pt>
+<Modell_Doppelpendel.PNG, id=86, 434.37282pt x 311.66437pt>
 File: Modell_Doppelpendel.PNG Graphic file (type png)
 
 <use Modell_Doppelpendel.PNG>
@@ -908,129 +908,118 @@ has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.126 
-       <./Modell_Doppelpendel.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
-
- []
-
-[8] [9] [10]
+       <./Modell_Doppelpendel.PNG>] [7]
  .
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 143.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 140.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 167.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 164.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-) [11
+) [8
 
 ]
-Overfull \hbox (72.60425pt too wide) in paragraph at lines 196--197
+Overfull \hbox (72.60425pt too wide) in paragraph at lines 193--194
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (15.00366pt too wide) in paragraph at lines 198--200
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 195--197
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (72.60425pt too wide) in paragraph at lines 204--205
+Overfull \hbox (72.60425pt too wide) in paragraph at lines 201--202
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (15.00366pt too wide) in paragraph at lines 214--215
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 211--212
 [][][][][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 221.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 218.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 221.
-
-Overfull \hbox (15.00366pt too wide) in paragraph at lines 239--240
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 218.
+ [9]
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 236--237
 [][][][][][][][][] 
  []
 
-[12]
-Overfull \hbox (58.2041pt too wide) in paragraph at lines 283--285
+
+Overfull \hbox (58.2041pt too wide) in paragraph at lines 280--282
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (0.60352pt too wide) in paragraph at lines 291--292
+Overfull \hbox (0.60352pt too wide) in paragraph at lines 288--289
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (5.40356pt too wide) in paragraph at lines 300--301
+[10]
+Overfull \hbox (5.40356pt too wide) in paragraph at lines 297--298
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.20361pt too wide) in paragraph at lines 301--302
+Overfull \hbox (10.20361pt too wide) in paragraph at lines 298--299
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
  []
 
 
-Overfull \hbox (15.00366pt too wide) in paragraph at lines 302--303
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 299--300
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (15.00366pt too wide) in paragraph at lines 304--305
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 301--302
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
-[13]
-Overfull \hbox (19.80371pt too wide) in paragraph at lines 323--324
+
+Overfull \hbox (19.80371pt too wide) in paragraph at lines 320--321
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 328.
+[11]
+ .
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 326.
+[12
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
-
- []
-
-[14] [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 328.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 326.
  (./Version2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 328.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 328.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 326.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 326.
 Package rerunfilecheck Info: File `Version2.out' has not changed.
-(rerunfilecheck)             Checksum: 28C60267AEA6EA2910E97FE75BBD6FCB;399.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 328.
+(rerunfilecheck)             Checksum: BF0F85AAC4E8079629A556C34C02F30E;502.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 326.
  ) 
 Here is how much of TeX's memory you used:
- 9731 strings out of 495003
- 137105 string characters out of 6181404
+ 9730 strings out of 495003
+ 137104 string characters out of 6181404
  264524 words of memory out of 5000000
- 12617 multiletter control sequences out of 15000+600000
+ 12618 multiletter control sequences out of 15000+600000
  9090 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,12n,43p,575b,1870s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,43p,376b,1870s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist
@@ -1044,10 +1033,10 @@ cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Version2.pdf (15 pages, 233404 bytes).
+Output written on Version2.pdf (12 pages, 233609 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
- 208 named destinations out of 1000 (max. 500000)
- 75 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 357 compressed objects within 4 object streams
+ 206 named destinations out of 1000 (max. 500000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
