@@ -2,8 +2,9 @@
 \BOOKMARK [0][-]{chapter.2}{Aufgabenstellung}{}% 2
 \BOOKMARK [0][-]{chapter.3}{Modellbildung}{}% 3
 \BOOKMARK [0][-]{chapter.4}{Implementierung in MATLAB}{}% 4
-\BOOKMARK [1][-]{section.4.1}{Variablendifinition}{chapter.4}% 5
+\BOOKMARK [1][-]{section.4.1}{Variablendifinition und Modellbildung}{chapter.4}% 5
 \BOOKMARK [1][-]{section.4.2}{Simulation}{chapter.4}% 6
 \BOOKMARK [1][-]{section.4.3}{Plot und Ausgabe}{chapter.4}% 7
 \BOOKMARK [1][-]{section.4.4}{sourcecode}{chapter.4}% 8
 \BOOKMARK [0][-]{chapter.5}{Implementierung in MalpeSim}{}% 9
+\BOOKMARK [1][-]{section.5.1}{Modellbildung}{chapter.5}% 10

@@ -36,6 +36,33 @@
     urlcolor={blue!80!black}
    }
 
+\lstset{ %
+  language=Matlab,                % the language of the code
+  basicstyle=\small,              % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  %commentstyle=\color{dkgreen},       % comment style
+  %stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={end,sortrows}               % if you want to add more keywords to the set
+}
+
 
 
 
@@ -122,7 +149,10 @@ Eine Masse $ m_{m} $ gleitet reibungsfrei auf einer horizontalen Ebene. An der M
 \end{figure}
 \noindent
 
-Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatte entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und linearisieren zu lassen.
+Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatte entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und in MATLAB linearisieren zu lassen. 
+ \\
+\\ 
+Auf die Modellbildung in MATLAB wird in Kapitel 3.1 näher eingegangen. Für die Implementierung in MapleSim wurde das gegebene mechanische Modell so übernommen, da eine 
 	
 
 
@@ -130,9 +160,28 @@ Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung
 \chapter{Implementierung in MATLAB}
 \renewcommand{\thechapter}{3}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% *titel von section eventuell subsection wegen uebersicht*
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% *titel von section eventuell subsection wegen uebersicht*
 %
- \section{Variablendifinition}
+MATLAB ist eine numerische Programmiersprache, welche für die schnelle Manipulation und Berechnung von Matrizen entwickelt wurde. Programmiert wird unter Matlab in einer proprietären Programmiersprache, die auf der jeweiligen Maschine interpretiert wird. Die Programmierung erfolgt hierbei textuell.
+
+ \section{Variablendifinition und Modellbildung}
+Bevor wir unser System simulieren lassen können, müssen wir unser mechanisches (Ersatz-)System in ein digitales Modell übersetzen. Dazu müssen dem Programm einige Parameter übergeben werden.\\
+ Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade und Körper festgelegt. Außerdem wird ein Minimalkoordinatenvektor mit zugehörigen zeitlichen Ableitungen bestimmt.
+
+\begin{lstlisting}
+%Definition der Systemvariablen
+syms l1 l2 phi_1 phi_2 phi_p1 phi_p2 phi_pp1 phi_pp2
+syms a a_p a_pp mm m1 m2 g I_1 I_2 F xc
+
+frg=3;                                     %Anzahl der Freiheitsgrade
+n=3;                                       %Anzahl der Koerper
+
+q=[a ; phi_1 ; phi_2];                     %Minimalkoordinaten
+q_p=[a_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
+q_pp=[a_pp ; phi_pp1 ; phi_pp2];
+\end{lstlisting}
+ work in progress...
+
 \section{Simulation}
 \section{Plot und Ausgabe}
 \section{sourcecode}
@@ -323,4 +372,8 @@ disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
 \renewcommand{\thechapter}{}
 \chapter{Implementierung in MalpeSim}
 \renewcommand{\thechapter}{4}
+Nachdem das vorherige Kapitel ausschließlich der Implementierung in MATLAB gewidment wurde, beschäftigt sich dieses Kapitel nun mit der Umsetzung in einer \textit{nicht klassischen}, blockorientierten, grafischen Programmierung in MapleSim. \\
+Wie bereits erwähnt funktioniert die Programmierung in MapleSim grafisch. Es wird zuerst das Modell (in unserem Fall das geregelte mechanische Doppelpendel) im MapleSim GUI nachgebildet. Anschließend können Signale direkt an diesem Model abgegriffen und ins System rückgeführt werden.. Dadurch lassen sich selbst komplexe dynamische Systeme aus allen Bereichen der Natur- und Ingeneurswissenschaften vergleichsweise einfach modellieren.
+\section{Modellbildung}
+Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können wurden direkt die Größen aus der Angabe verwendet. Die Materialparamter sind selbstverständlich die selben, wie die, die auch schon in den anderen Kapiteln verwendet wurden.
 \end{document}
