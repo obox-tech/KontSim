@@ -128,7 +128,7 @@ Viel Spaß beim Lesen wünschen
 Sowohl mit MATLAB als auch MapleSim soll ein mechanisches Modell eines geregelten Doppelpendels realisiert werden. Dabei soll unter anderem ein Vergleich zwischen klassischer textueller Programmierung in MATLAB und grafischer, blockorientierter Modellierung in MapleSim gezogen werden.
 \\
 \\
-\\Implementieren Sie das Modell mit MATLAB. Führen Sie einen Simulationslauf mit den angegebenen Parametern durch, plotten Sie die Auslenkung x sowie die beiden Winkel $\varphi_{1}$ und $\varphi_{2}$ über der Zeit und interpretieren Sie die Ergebnisse. Berechnen Sie mit MATLAB auch die Eigenwerte. Ist das System stabil? Begründen Sie Ihre Aussage.
+\\Implementieren Sie das Modell mit MATLAB. Führen Sie einen Simulationslauf mit den angegebenen Parametern durch, plotten Sie die Auslenkung $x$ sowie die beiden Winkel $\theta_{1}$ und $\theta_{2}$ über der Zeit und interpretieren Sie die Ergebnisse. Berechnen Sie mit MATLAB auch die Eigenwerte. Ist das System stabil? Begründen Sie Ihre Aussage.
 \\
 \\
 Bauen Sie das Modell mit MapleSim auf, testen Sie das Modell mit den angegebenen Parametern und vergleichen Sie die Ergebnisse mit jenen aus der MATLAB-Simulation.
@@ -391,10 +391,34 @@ Wie sich im MATLAB Code schon erkennen lässt sind die Realteile aller Eigenwert
 \renewcommand{\thechapter}{}
 \chapter{Implementierung in MalpeSim}
 \renewcommand{\thechapter}{4}
-Nachdem das vorherige Kapitel ausschließlich der Implementierung in MATLAB gewidment wurde, beschäftigt sich dieses Kapitel nun mit der Umsetzung in einer \textit{nicht klassischen}, blockorientierten, grafischen Programmierung in MapleSim. \\
-Wie bereits erwähnt funktioniert die Programmierung in MapleSim grafisch. Es wird zuerst das Modell (in unserem Fall das geregelte mechanische Doppelpendel) im MapleSim GUI nachgebildet. Anschließend können Signale direkt an diesem Model abgegriffen und ins System rückgeführt werden.. Dadurch lassen sich selbst komplexe dynamische Systeme aus allen Bereichen der Natur- und Ingeneurswissenschaften vergleichsweise einfach modellieren.
+Nachdem das vorherige Kapitel ausschließlich der Implementierung in MATLAB gewidment wurde, beschäftigt sich dieses Kapitel nun mit der Umsetzung mittels einer \textit{nicht klassischen}, blockorientierten, grafischen Programmierung in MapleSim. \\
+Wie bereits erwähnt funktioniert die Programmierung in MapleSim grafisch. Es wird zuerst das Modell (in unserem Fall das geregelte mechanische Doppelpendel) im MapleSim GUI nachgebildet. Anschließend können Signale direkt an diesem Model abgegriffen und ins System rückgeführt werden. Dadurch lassen sich selbst komplexe dynamische Systeme aus allen Bereichen der Natur- und Ingeneurswissenschaften vergleichsweise einfach modellieren.
 \section{Modellbildung}
-Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können wurden direkt die Größen aus der Angabe verwendet. Die Materialparamter sind selbstverständlich die selben, wie die, die auch schon in den anderen Kapiteln verwendet wurden.
+Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können wurden direkt die Größen aus der Angabe verwendet. Die Materialparamter sind selbstverständlich die selben, wie die, die auch schon in den anderen Kapiteln verwendet wurden. 
+\\\\
+Das Pendel wurde aus Komponenten der \textit{Multibody}-Bibliothek aufgebaut. Es besteht aus einem festen Rahmen (\textit{fixed frame}), zwei Drehgelenken (\textit{revolutes}), einem Schlitten (\textit{prismatic}) und den zwei Stäben. \\
+Da innerhalb der Standardbibliotheken keine Kompnenten gab, die die geforderten mechanischen Eigenschaften (Masserverteilung und somit Schwerpunkt und Trägheitstensor) erfüllten, wurden die Stäbe aus jeweils zwei starren Körpern (\textit{rigid body frames}) und einer Punktmasse (\textit{point mass}) nachgebildet. Die Komponenten der Stäbe wurden aus Gründen der Übersichtlichkeit zu Subsystemen zusammengefasst.
+\\\\
+abbildung mech model MapleSim
+x\\x\\x\\x\\x\\x\\x\\x\\
+\\\\
+eventuel Abbildung subsystem stab
 
-what what
+
+\section{Regelung}
+Auch der Bau des Regler ist vergleichweise einfach. Die nötigen (Zustands-)Größen $\theta_{1}$, $\theta_{2}$ und $x$ können direkt ausgelesen, abgegriffen und weiterverwendet werden. \\
+$\theta_{1}$ kann direkt ausglesen werden und wird unverändert dem Regelungssubsystem übergeben. Für $\theta_{2}$ wird der Winkel, den die beiden Stäbe miteinander einschließen, gemessen und zu $\theta_{1}$ addiert. Der Abstand des Schlittens vom Koordinatenursprung $x$ kann auch direkt ausgelesen und weitegeben werden. 
+\\ \\
+Wie schon bei den Stäben wurde die Regelung zu einem Subsystem zusammengefasst um eine hohe Übersicht gewährleisten zu können. Dieser Regelung möchten wir uns nun widmen.
+\\ \\
+abbildung subsystem regelung
+x\\x\\x\\x\\x\\x\\x\\
+\\ \\
+Die Rückstellkraft ...
+\\ \\
+eingänge u1 - u6 und ausgang y labeln? \\
+simulation? \\
+eigenwertberechnung? \\
+
+abschließende worte? (vergleich, pros-cons, erfahrung, etc.)
 \end{document}
