@@ -83,7 +83,7 @@
 	Felix Hochwallner - 1328839 \newline
 	Oskar Fürnhammer - 1329133}} % Author name
 \\ \\ \\ \\
-{Studienkennzahl 033 282}
+
 
 \vspace{0.5\textheight} % Whitespace between the title block and the publisher
 {\includegraphics[width=0.5cm]{TU-Logo}\noindent \ \ E325 Institut für Mechanik und Mechatronik}\\[\baselineskip] % Publisher and logo
@@ -114,7 +114,7 @@ Sehr geehrte Damen und Herren, liebe Leser und Leserinnen!
 \\
 \\
 Das vorliegende Protkoll wurde im Rahmen der Vorlesung und Übung \textit{Kontinuierliche Simluation (325.040/325.041)} verfasst und beschäftigt sich mit der Implementierung einer einfachen Regelung eines mechanischen Doppelpendels, sowohl in MATLAB, als auch in MalpeSim. \\
-Dadurch soll unter anderem ein Vergleich zwischen klassischer textuelle Programmierung und grafischer, blockorientierter Modellierung gezogen werden. Betreut wurde das Projekt der Gruppe 47 von Fabian.
+Dadurch soll unter anderem ein Vergleich zwischen klassischer textuelle Programmierung und grafischer, blockorientierter Modellierung gezogen werden. Betreut wurde das Projekt der Gruppe 47 von Fabian Germ.
 \\
 \\
 Viel Spaß beim Lesen wünschen
@@ -148,10 +148,19 @@ Eine Masse $ m_{m} $ gleitet reibungsfrei auf einer horizontalen Ebene. An der M
 \end{figure}
 \noindent
 
-Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatte entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und in MATLAB linearisieren zu lassen. 
- \\
-\\ 
-Auf die Modellbildung in MATLAB wird in Kapitel 3.1 näher eingegangen. Für die Implementierung in MapleSim wurde das gegebene mechanische Modell so übernommen, da eine 
+Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatten entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und in MATLAB linearisieren zu lassen. Die Bewegungsgleichung erhalten wir mithilfe der Langrange Gleichung 2.Art.\\\\
+$\dfrac{d}{dt}(\dfrac{\delta T}{\delta \dot{q_{i}}})-\dfrac{\delta T}{\delta q_{i}}+\dfrac{\delta V}{\delta q_{i}}=0$\\\\
+Dafür werden die kinetische und die potentielle Energie benötigt. Die kinetische Energie setzt sich wiederum aus einem translatorischen und einem rotatorischen Anteil zusammen.\\\\
+$ T=T_{trans}+T_{rot} $\\\\
+Um den translatorischen Anteil zu berechnen werden die Geschwindigkeitsvektoren der Körper benötigt. \\\\
+$ T_{trans}=\dfrac{1}{2} m \vec{v}^{2} $\\\\
+$\vec{v}=Jv*\dot{q} $ \\\\
+Die Jacobi-Matrix erhält man mit dem Befehl jacobian und besteht aus den partiellen Ableitungen der Ortsvektoren zu den Schwerpunkten nach den Minimalkoordinaten.
+Der rotatorische Anteil wird mit Hilfe der Winkelgeschwindigkeitsvektoren der Stäbe und der Trägheitstensoren berechnet.\\\\
+$ T_{rot}=\dfrac{1}{2} I_{s} \vec{\omega}^{2} $\\\\
+Mit dem Befehl diag erfolgt die Festlegung der Trägheitstensoren als Diagonalmatrix, mit den Trägheitmomenten in der Diagonale.
+Um die Energien in die Lagrange Gleichung 2.Art einsetzen zu können müssen sie partiell Abgeleitet werden (siehe Formel oben). Dies geschieht wiederum mit einer Jacobi-Matrix.
+Die Linearisierung um die Gleichgewichtslage erhält man indem man alle Lagekoordinaten Null setzt. Der Befehl subs ersetzt dabei  $ \phi1 $,$ \phi2 $  , a und ihre Ableitungen mit 0.\\
 	
 
 
@@ -165,20 +174,7 @@ MATLAB ist eine numerische Programmiersprache, welche für die schnelle Manipula
 
  \section{Variablendifinition und Modellbildung}
 Bevor wir unser System simulieren lassen können, müssen wir unser mechanisches (Ersatz-)System in ein digitales Modell übersetzen. Dazu müssen dem Programm einige Parameter übergeben werden.\\
-Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade und Körper festgelegt. Außerdem wird ein Minimalkoordinatenvektor mit zugehörigen zeitlichen Ableitungen bestimmt.Die Bewegungsgleichung erhalten wir mithilfe der Langrange Gleichung 2.Art.\\\\
-$\dfrac{d}{dt}(\dfrac{\delta T}{\delta \dot{q_{i}}})-\dfrac{\delta T}{\delta q_{i}}+\dfrac{\delta V}{\delta q_{i}}=0$\\\\
-Dafür werden die kinetische und die potentielle Energie benötigt. Die kinetische Energie setzt sich wiederum aus einem translatorischen und einem rotatorischen Anteil zusammen.\\\\
-$ T=T_{trans}+T_{rot} $\\\\
-$ T_{trans}=\dfrac{1}{2} m \vec{v}^{2} $\\\\
-$ T_{rot}=\dfrac{1}{2} I_{s} \vec{\omega}^{2} $\\\\
-Um den translatorischen Anteil zu berechnen werden die Geschwindigkeitsvektoren der Körper benötigt. \\\\
-$\vec{v}=Jv*\dot{q} $ \\\\
-Die Jacobi-Matrix erhält man mit dem Befehl jacobian und besteht aus den partiellen Ableitungen der Ortsvektoren zu den Schwerpunkten nach den Minimalkoordinaten.
-Der rotatorische Anteil wird mit Hilfe der Winkelgeschwindigkeitsvektoren der Stäbe und der Trägheitstensoren berechnet.
-Mit dem Befehl diag erfolgt die Festlegung der Trägheitstensoren als Diagonalmatrix, mit den Trägheitmomenten in der Diagonale.
-Um die Energien in die Lagrange Gleichung 2.Art einsetzen zu können müssen sie partiell Abgeleitet werden (siehe Formel oben). Dies geschieht wiederum mit einer Jacobi-Matrix.
-Die Linearisierung um die Gleichgewichtslage erhält man indem man alle Lagekoordinaten Null setzt. Der Befehl subs ersetzt dabei  $ \phi1 $,$ \phi2 $  , a und ihre Ableitungen mit 0.\\
-
+Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade und Körper festgelegt. Außerdem wird ein Minimalkoordinatenvektor mit zugehörigen zeitlichen Ableitungen bestimmt.
 \begin{lstlisting}
 %Definition der Systemvariablen
 syms l1 l2 phi_1 phi_2 phi_p1 phi_p2 phi_pp1 phi_pp2
@@ -191,7 +187,6 @@ q=[a ; phi_1 ; phi_2];                     %Minimalkoordinaten
 q_p=[a_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
 q_pp=[a_pp ; phi_pp1 ; phi_pp2];
 \end{lstlisting}
- work in progress...
 
 \section{Simulation}
 \section{Plot und Ausgabe}
