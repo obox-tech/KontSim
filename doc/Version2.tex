@@ -148,22 +148,34 @@ Eine Masse $ m_{m} $ gleitet reibungsfrei auf einer horizontalen Ebene. An der M
 \end{figure}
 \noindent
 
-Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatten entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und in MATLAB linearisieren zu lassen. Die Bewegungsgleichung erhalten wir mithilfe der Langrange Gleichung 2.Art.\\\\
-$\dfrac{d}{dt}(\dfrac{\delta T}{\delta \dot{q_{i}}})-\dfrac{\delta T}{\delta q_{i}}+\dfrac{\delta V}{\delta q_{i}}=0$\\\\
-Dafür werden die kinetische und die potentielle Energie benötigt. Die kinetische Energie setzt sich wiederum aus einem translatorischen und einem rotatorischen Anteil zusammen.\\\\
-$ T=T_{trans}+T_{rot} $\\\\
-Um den translatorischen Anteil zu berechnen werden die Geschwindigkeitsvektoren der Körper benötigt. \\\\
-$ T_{trans}=\dfrac{1}{2} m \vec{v}^{2} $\\\\
-$\vec{v}=Jv*\dot{q} $ \\\\
-Die Jacobi-Matrix erhält man mit dem Befehl jacobian und besteht aus den partiellen Ableitungen der Ortsvektoren zu den Schwerpunkten nach den Minimalkoordinaten.
-Der rotatorische Anteil wird mit Hilfe der Winkelgeschwindigkeitsvektoren der Stäbe und der Trägheitstensoren berechnet.\\\\
-$ T_{rot}=\dfrac{1}{2} I_{s} \vec{\omega}^{2} $\\\\
-Mit dem Befehl diag erfolgt die Festlegung der Trägheitstensoren als Diagonalmatrix, mit den Trägheitmomenten in der Diagonale.
-Um die Energien in die Lagrange Gleichung 2.Art einsetzen zu können müssen sie partiell Abgeleitet werden (siehe Formel oben). Dies geschieht wiederum mit einer Jacobi-Matrix.
-Die Linearisierung um die Gleichgewichtslage erhält man indem man alle Lagekoordinaten Null setzt. Der Befehl subs ersetzt dabei  $ \phi1 $,$ \phi2 $  , a und ihre Ableitungen mit 0.\\
-	
+Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatten entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und in MATLAB linearisieren zu lassen. Die Bewegungsgleichung erhalten wir mithilfe der Langrange Gleichung 2.Art.
 
-
+\begin{equation}
+\label{eqn:Lagrangegleichung}
+\dfrac{d}{dt}(\dfrac{\delta T}{\delta \dot{q_{i}}})-\dfrac{\delta T}{\delta q_{i}}+\dfrac{\delta V}{\delta q_{i}}=0
+\end{equation}
+Dafür werden die kinetische und die potentielle Energie benötigt. Die kinetische Energie setzt sich wiederum aus einem translatorischen und einem rotatorischen Anteil zusammen.
+\begin{equation}
+T=T_{trans}+T_{rot} 
+\end{equation}
+Um den translatorischen Anteil zu berechnen werden die Geschwindigkeitsvektoren der Körper benötigt.
+\begin{equation}
+T_{trans}=\dfrac{1}{2} m \vec{v}^{2} 
+\end{equation}
+\begin{equation}
+\vec{v}=Jv*\dot{q}
+\end{equation}
+Die Jacobi-Matrix $J$ besteht aus den partiellen Ableitungen der Ortsvektoren zu den Schwerpunkten nach den Minimalkoordinaten.
+Der rotatorische Anteil wird mit Hilfe der Winkelgeschwindigkeitsvektoren der Stäbe und der Trägheitstensoren berechnet.
+\begin{equation}
+T_{rot}=\dfrac{1}{2} I_{s} \vec{\omega}^{2}
+\end{equation}
+Um die Energien in die Lagrange Gleichung 2.Art einsetzen zu können müssen sie partiell Abgeleitet werden (Siehe Gleichgung \ref{eqn:Lagrangegleichung}). Dies geschieht wiederum mit einer Jacobi-Matrix. \\
+Damit erhalten wir schließlich die Bewgungsgleichungen in folgender Form:
+\begin{equation}
+M(q)\ddot{q} + f(q,\dot{q}) = 0
+\end{equation}
+Diese linearisieren wir nun um die Ruhelage, indem wir die Lagekoordinaten $\theta_{1}, \theta_{2}$ und $x$, sowie ihre Ableitung, nullsetzen.
 \renewcommand{\thechapter}{}
 \chapter{Implementierung in MATLAB}
 \renewcommand{\thechapter}{3}
@@ -187,24 +199,9 @@ q=[a ; phi_1 ; phi_2];                     %Minimalkoordinaten
 q_p=[a_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
 q_pp=[a_pp ; phi_pp1 ; phi_pp2];
 \end{lstlisting}
-
-\section{Simulation}
-\section{Plot und Ausgabe}
-\section{sourcecode}
-
+\newpage \noindent
+Außerdem benötigen wir noch die Ortvektoren, sowie diverse Koeffizietenmatrizen um später in die Lagrange'sche Gleichung 2. Art einsetzen zu können. 
 \begin{lstlisting}
-%---- Ermitteln der Bewegungsgleichungen
-%     definieren der Systemvariablen
-syms l1 l2 phi_1 phi_2 phi_p1 phi_p2 phi_pp1 phi_pp2
-syms a a_p a_pp mm m1 m2 g I_1 I_2 F xc
-
-frg=3;                                     %Anzahl der Freiheitsgrade
-n=3;                                       %Anzahl der Koerper
-
-q=[a ; phi_1 ; phi_2];                     %Minimalkoordinaten
-q_p=[a_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
-q_pp=[a_pp ; phi_pp1 ; phi_pp2];
-
 %---- Drehmatrix Stab 1
 T_IK1 = [cos(phi_1) sin(phi_1) 0;
         -sin(phi_1) cos(phi_1) 0;
@@ -251,7 +248,9 @@ T = simplify(T);                                             %Vereinfachung
 
 %---- potentielle Energie
 V=-(m1*I_r_S1.'+m2*I_r_S2.')*[0 ; -g ; 0];
-
+\end{lstlisting}
+Schließlich werden nach Gleichgung (2.1) die Bewgungsgleichungen berechnet und um die Ruhelage linearisiert. Außerdem werden noch die, für eine Zustandsraumdarstellung erforderlichen Matrizen berechnet und ausgegeben.
+\begin{lstlisting}
 %---- Ableitungen fuer LAGRANGEsche Gleichung 2. Art
 dTdv = simplify(jacobian(T,q_p).');         %mit transponieren zu Spaltenvektor gemacht
 dTdq = simplify(jacobian(T,q).');
@@ -263,7 +262,7 @@ M = simplify(jacobian(dTdv,q_p))
 disp('System-Vektorfunktion f')
 f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0])
 
-%==========================================================================
+%=================================================
 %---- Linearisierung um die Gleichgewichtslage:
 %     phi_1 = 0, phi_2 = 0, a = 0
 
@@ -287,8 +286,18 @@ disp('Daempfungsmatrix')
 D = 1/2*(P+P.')
 disp('gyroskopischer Anteil')
 G = 1/2*(P-P.')
+ \end{lstlisting}
 
-%==========================================================================
+\section{Zustandsraumdarstellung und Reglerentwurf}
+Um die Auslegung des LQ-Reglers effizient gestalten zu können transformieren wir unser Problem in den Zustandsraum und berechnen die Regelunskonstante. 
+
+EKLÄRUNG Zustandsraum LQR 
+
+XXXXXX \\
+XXXXX \\
+
+\begin{lstlisting}
+%============================================
 %----Erstellen und Simulieren der Zustandsraumdarstellung
 syms x th1 th2 x_p th1_p th2_p
 syms x_pp th1_pp th2_pp
@@ -344,7 +353,11 @@ u =0.2*ones(size(t));
 %Input
 [y,t,x]=lsim(sys_cl,u,t);
 
+\end{lstlisting}
 
+\section{Simulation und Ausgabe}
+Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung XXXX über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
+\begin{lstlisting}
 %----Drei einzelne Diagramme in einem Fenster
 figure(1);
 ax(1) = subplot(3,1,1);
@@ -361,19 +374,19 @@ ax(3) = subplot(3,1,3);
     title(ax(3),'angle theta 2');
     grid on
 
-%----Plotten der Ausgangsgroessen
-% [AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
-% hold on
-% line(t,y(:,3),'parent',AX(2),'color','g')
-% hold off
-% set(get(AX(1),'Ylabel'),'String','cart position (m)')
-% set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
-% title('Step Response with LQR Control')
 
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)
 disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
+
 \end{lstlisting}
+Wie sich im MATLAB Code schon erkennen lässt sind die Realteile aller Eigenwerte negativ. Somit ist das betrachtete System stabil!
+
+\begin{figure}[h]
+\centering  %Zentrierung
+{\includegraphics[width=15cm]{AusgabeMATLAB}}
+\caption{MATLAB Plot}
+\end{figure}
 
 \renewcommand{\thechapter}{}
 \chapter{Implementierung in MalpeSim}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2016/dev) (preloaded format=pdflatex 2016.10.22)  25 OCT 2016 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2016/dev) (preloaded format=pdflatex 2016.10.22)  26 OCT 2016 19:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -738,33 +738,33 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 37.
+Package hyperref Info: Option `colorlinks' set `true' on input line 36.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./Version2.aux)
 \openout1 = `Version2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 97.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    ... okay on input line 97.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -795,10 +795,10 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring ON on input line 98.
-LaTeX Info: Redefining \ref on input line 98.
-LaTeX Info: Redefining \pageref on input line 98.
-LaTeX Info: Redefining \nameref on input line 98.
+Package hyperref Info: Link coloring ON on input line 97.
+LaTeX Info: Redefining \ref on input line 97.
+LaTeX Info: Redefining \pageref on input line 97.
+LaTeX Info: Redefining \nameref on input line 97.
 
 (./Version2.out) (./Version2.out)
 \@outlinefile=\write3
@@ -806,27 +806,32 @@ LaTeX Info: Redefining \nameref on input line 98.
 
 \c@lstlisting=\count131
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
-<TU-Logo.png, id=44, 123.0999pt x 123.0999pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+
+ []
+
+<TU-Logo.png, id=40, 123.0999pt x 123.0999pt>
 File: TU-Logo.png Graphic file (type png)
  <use TU-Logo.png>
-Package pdftex.def Info: TU-Logo.png used on input line 100.
+Package pdftex.def Info: TU-Logo.png used on input line 99.
 (pdftex.def)             Requested size: 14.22636pt x 14.22475pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
@@ -848,12 +853,12 @@ ng>] (./Version2.toc)
 ]
  .
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--122
+Underfull \hbox (badness 10000) in paragraph at lines 113--121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--122
+Underfull \hbox (badness 10000) in paragraph at lines 113--121
 
  []
 
@@ -862,22 +867,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--122
 ]
  .
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--136
+Underfull \hbox (badness 10000) in paragraph at lines 128--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--136
+Underfull \hbox (badness 10000) in paragraph at lines 128--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--136
+Underfull \hbox (badness 10000) in paragraph at lines 128--135
 
  []
 
 
-Overfull \hbox (1.08397pt too wide) in paragraph at lines 129--136
+Overfull \hbox (1.08397pt too wide) in paragraph at lines 128--135
 \OT1/cmr/m/n/10 Bauen Sie das Mod-ell mit MapleSim auf, testen Sie das Mod-ell 
 mit den angegebe-
  []
@@ -886,24 +891,19 @@ mit den angegebe-
 
 ]
  .
-<Modell_Doppelpendel.PNG, id=91, 434.37282pt x 311.66437pt>
+<Modell_Doppelpendel.PNG, id=88, 434.37282pt x 311.66437pt>
 File: Modell_Doppelpendel.PNG Graphic file (type png)
 
 <use Modell_Doppelpendel.PNG>
-Package pdftex.def Info: Modell_Doppelpendel.PNG used on input line 147.
+Package pdftex.def Info: Modell_Doppelpendel.PNG used on input line 146.
 (pdftex.def)             Requested size: 426.79134pt x 306.2422pt.
 
-Overfull \hbox (81.79134pt too wide) in paragraph at lines 147--148
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 146--147
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--151
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 152--156
+Underfull \hbox (badness 10000) in paragraph at lines 140--150
 
  []
 
@@ -914,11 +914,17 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.156 
-       <./Modell_Doppelpendel.PNG>] [7]
+l.152 
+       <./Modell_Doppelpendel.PNG>]
+Overfull \hbox (9.27838pt too wide) in paragraph at lines 167--170
+\OT1/cmr/m/n/10 mit Hilfe der Winkelgeschwindigkeitsvek-toren der St^^?abe und 
+der Tr^^?agheitstensoren
+ []
+
+[7]
  .
 
-Overfull \hbox (25.15817pt too wide) in paragraph at lines 168--170
+Overfull \hbox (25.15817pt too wide) in paragraph at lines 188--190
 \OT1/cmr/m/n/10 und K^^?orper fest-gelegt. Au^^Yer-dem wird ein Min-i-malko-or-
 di-naten-vek-tor mit zugeh^^?origen
  []
@@ -926,44 +932,65 @@ di-naten-vek-tor mit zugeh^^?origen
 [8
 
 ] [9]
-Overfull \hbox (85.70135pt too wide) in paragraph at lines 260--261
-[][][][] 
- []
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 272.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 267.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 267.
- [10]
-Overfull \hbox (85.70135pt too wide) in paragraph at lines 285--286
-[][][][] 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 272.
+
+Overfull \hbox (5.76128pt too wide) in paragraph at lines 291--291
+[]\OT1/cmr/bx/n/14.4 Zustandsraumdarstellung und Re-gleren-twurf 
  []
 
-[11] [12]
+
+Underfull \hbox (badness 10000) in paragraph at lines 296--298
+
+ []
+
+[10] [11] <AusgabeMATLAB.png, id=271, 421.575pt x 316.18124pt>
+File: AusgabeMATLAB.png Graphic file (type png)
+
+<use AusgabeMATLAB.png>
+Package pdftex.def Info: AusgabeMATLAB.png used on input line 387.
+(pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 387--388
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12] [13pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.4.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.392 \chapter
+              {Implementierung in MalpeSim} <./AusgabeMATLAB.png (PNG copy)>]
  .
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 381.
-[13
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 400.
+[14
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 381.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 400.
  (./Version2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 381.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 381.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 400.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 400.
 Package rerunfilecheck Info: File `Version2.out' has not changed.
-(rerunfilecheck)             Checksum: D61F85FCE2913AABA2F3E023C42BD49F;580.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 381.
+(rerunfilecheck)             Checksum: BBEA2826BC1C039675286CCA9911DD2F;560.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 400.
  ) 
 Here is how much of TeX's memory you used:
- 10225 strings out of 495003
- 142753 string characters out of 6181404
- 458600 words of memory out of 5000000
- 13104 multiletter control sequences out of 15000+600000
+ 10217 strings out of 495003
+ 142542 string characters out of 6181404
+ 420600 words of memory out of 5000000
+ 13109 multiletter control sequences out of 15000+600000
  8701 words of font info for 31 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,12n,43p,465b,1861s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,43p,465b,1857s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texl
@@ -975,14 +1002,15 @@ ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
 c/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb>
-Output written on Version2.pdf (13 pages, 273656 bytes).
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/cm-super/sfrm0900.pfb>
+Output written on Version2.pdf (14 pages, 303877 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 388 compressed objects within 4 object streams
- 219 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 413 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
