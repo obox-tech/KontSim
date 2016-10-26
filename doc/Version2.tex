@@ -13,7 +13,6 @@
 \usepackage[gen]{eurosym}
 \usepackage{float}
 \usepackage{mcode}
-
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 \renewcommand{\chaptername}{}
@@ -77,7 +76,7 @@
 \hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
 \parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
 
-{\noindent\Huge\bfseries Kontinuierliche Simulation}\\[2\baselineskip] % Title
+{\noindent\Huge\bfseries Kontinuierliche\\ Simulation}\\[2\baselineskip] % Title
 {\large 325.040 - Projekt 47 - \textit{Sommersemester 2016}}\\[4\baselineskip] % Tagline or further description
 {\textsc{Fabian Wedenik - 1426866 \newline
 	Alexander Wimmer - 1328958 \newline
@@ -114,8 +113,8 @@
 Sehr geehrte Damen und Herren, liebe Leser und Leserinnen!
 \\
 \\
-Das vorliegende Protkoll wurde im Rahmen der Vorlesung und Übung \textit{Kontinuierliche Simluation (325.040/325.041)} verfasst und beschäftigt sich mit der Implementierung einer einfachen Regelung eines mechanischen Doppelpändels, sowohl in MATLAB, als auch in MalpeSim. \\
-Dadurch soll unter anderem ein Vergleich zwischen klassischer textuelle Programmierung und grafischer, blockorientierter Modellierung gezogen werden. Betreut wurde das Projekt der Gruppe 47 von XXXXXX MISTER UNIVERSE XXXX.
+Das vorliegende Protkoll wurde im Rahmen der Vorlesung und Übung \textit{Kontinuierliche Simluation (325.040/325.041)} verfasst und beschäftigt sich mit der Implementierung einer einfachen Regelung eines mechanischen Doppelpendels, sowohl in MATLAB, als auch in MalpeSim. \\
+Dadurch soll unter anderem ein Vergleich zwischen klassischer textuelle Programmierung und grafischer, blockorientierter Modellierung gezogen werden. Betreut wurde das Projekt der Gruppe 47 von Fabian.
 \\
 \\
 Viel Spaß beim Lesen wünschen
@@ -166,7 +165,19 @@ MATLAB ist eine numerische Programmiersprache, welche für die schnelle Manipula
 
  \section{Variablendifinition und Modellbildung}
 Bevor wir unser System simulieren lassen können, müssen wir unser mechanisches (Ersatz-)System in ein digitales Modell übersetzen. Dazu müssen dem Programm einige Parameter übergeben werden.\\
- Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade und Körper festgelegt. Außerdem wird ein Minimalkoordinatenvektor mit zugehörigen zeitlichen Ableitungen bestimmt.
+Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade und Körper festgelegt. Außerdem wird ein Minimalkoordinatenvektor mit zugehörigen zeitlichen Ableitungen bestimmt.Die Bewegungsgleichung erhalten wir mithilfe der Langrange Gleichung 2.Art.\\\\
+$\dfrac{d}{dt}(\dfrac{\delta T}{\delta \dot{q_{i}}})-\dfrac{\delta T}{\delta q_{i}}+\dfrac{\delta V}{\delta q_{i}}=0$\\\\
+Dafür werden die kinetische und die potentielle Energie benötigt. Die kinetische Energie setzt sich wiederum aus einem translatorischen und einem rotatorischen Anteil zusammen.\\\\
+$ T=T_{trans}+T_{rot} $\\\\
+$ T_{trans}=\dfrac{1}{2} m \vec{v}^{2} $\\\\
+$ T_{rot}=\dfrac{1}{2} I_{s} \vec{\omega}^{2} $\\\\
+Um den translatorischen Anteil zu berechnen werden die Geschwindigkeitsvektoren der Körper benötigt. \\\\
+$\vec{v}=Jv*\dot{q} $ \\\\
+Die Jacobi-Matrix erhält man mit dem Befehl jacobian und besteht aus den partiellen Ableitungen der Ortsvektoren zu den Schwerpunkten nach den Minimalkoordinaten.
+Der rotatorische Anteil wird mit Hilfe der Winkelgeschwindigkeitsvektoren der Stäbe und der Trägheitstensoren berechnet.
+Mit dem Befehl diag erfolgt die Festlegung der Trägheitstensoren als Diagonalmatrix, mit den Trägheitmomenten in der Diagonale.
+Um die Energien in die Lagrange Gleichung 2.Art einsetzen zu können müssen sie partiell Abgeleitet werden (siehe Formel oben). Dies geschieht wiederum mit einer Jacobi-Matrix.
+Die Linearisierung um die Gleichgewichtslage erhält man indem man alle Lagekoordinaten Null setzt. Der Befehl subs ersetzt dabei  $ \phi1 $,$ \phi2 $  , a und ihre Ableitungen mit 0.\\
 
 \begin{lstlisting}
 %Definition der Systemvariablen
