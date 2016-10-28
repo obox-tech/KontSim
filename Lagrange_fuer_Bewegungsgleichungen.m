@@ -1,28 +1,28 @@
 %---- Ermitteln der Bewegungsgleichungen
 %     definieren der Systemvariablen
-syms l1 l2 th_1 th_2 th_p1 th_p2 th_pp1 th_pp2
+syms l1 l2 th1 th2 th1_p th2_p th1_pp th2_pp
 syms x x_p x_pp mm m1 m2 g I_1 I_2 F xc
 
 frg=3;                                     %Anzahl der Freiheitsgrade
 n=3;                                       %Anzahl der Koerper
 
-q=[x ; th_1 ; th_2];                     %Minimalkoordinaten
-q_p=[x_p ; th_p1 ; th_p2];               %zeitliche Ableitungen
-q_pp=[x_pp ; th_pp1 ; th_pp2];
+q=[x ; th1 ; th2];                     %Minimalkoordinaten
+q_p=[x_p ; th1_p ; th2_p];               %zeitliche Ableitungen
+q_pp=[x_pp ; th1_pp ; th2_pp];
 
 %---- Drehmatrix Stab 1
-T_IK1 = [cos(th_1) sin(th_1) 0;
-        -sin(th_1) cos(th_1) 0;
+T_IK1 = [cos(th1) sin(th1) 0;
+        -sin(th1) cos(th1) 0;
               0          0     1];
 %---- Drehmatrix Stab 2
-T_IK2 = [cos(th_2) sin(th_2) 0;
-        -sin(th_2) cos(th_2) 0;
+T_IK2 = [cos(th2) sin(th2) 0;
+        -sin(th2) cos(th2) 0;
               0          0     1];
 
 %---- Ortsvektoren
 I_r_Sm = [x;0;0];
-I_r_S1 = [x+l1/2*sin(th_1) ; l1/2*cos(th_1) ; 0];
-I_r_Q2 = [x+l1*sin(th_1) ; l1*cos(th_1) ; 0];
+I_r_S1 = [x+l1/2*sin(th1) ; l1/2*cos(th1) ; 0];
+I_r_Q2 = [x+l1*sin(th1) ; l1*cos(th1) ; 0];
 K1_r_Q1S1 = [0; l1/2; 0];
 K2_r_Q2S2 = [0; l2/2; 0];
 I_r_S2 = I_r_Q2 + T_IK2 * K2_r_Q2S2;
@@ -32,8 +32,8 @@ K1_I_S1 = diag([0 0 I_1]);
 K2_I_S2 = diag([0 0 I_2]);
 
 %---- Winkelgeschwindigkeitsvektoren der Staebe
-K_om1 = [0 ; 0 ; -th_p1];
-K_om2 = [0 ; 0 ; -th_p2];
+K_om1 = [0 ; 0 ; -th1_p];
+K_om2 = [0 ; 0 ; -th2_p];
 
 %---- JACOBI-Matrizen der Translation
 J_Tm = jacobian(I_r_Sm, q);
@@ -70,24 +70,24 @@ f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0])
 
 %==========================================================================
 %---- Linearisierung um die Gleichgewichtslage:
-%     th_1 = 0, th_2 = 0, x = 0
+%     th1 = 0, th2 = 0, x = 0
 
 disp(' ')
 disp('Elemente der linearisierten Bewegungsgleichung')
 disp('System-Massenmatrix M0')
-M0 = subs(M,{th_1, th_2, x},{0, 0, 0})
-f0 = subs(f,{x, th_1, th_2, x_p, ...
-    th_p1, th_p2},{0, 0, 0, 0, 0, 0});
+M0 = subs(M,{th1, th2, x},{0, 0, 0})
+f0 = subs(f,{x, th1, th2, x_p, ...
+    th1_p, th2_p},{0, 0, 0, 0, 0, 0});
 disp('Auslenkungs-proportionaler Anteil')
-Q = subs(jacobian(f,q),{x, th_1, th_2, x_p, ...
-    th_p1, th_p2},{0, 0, 0, 0, 0, 0})
+Q = subs(jacobian(f,q),{x, th1, th2, x_p, ...
+    th1_p, th2_p},{0, 0, 0, 0, 0, 0})
 disp('Steifigkeitsmatrix K')
 K = 1/2*(Q+Q.')
 disp('Matrix der nichtkonservativen Kräfte')
 N = 1/2*(Q-Q.')
 disp('gesschw.-proportionaler Anteil')
-P = subs(jacobian(f,q_p),{x, th_1, th_2, x_p, ...
-    th_p1, th_p2},{0, 0, 0, 0, 0, 0})
+P = subs(jacobian(f,q_p),{x, th1, th2, x_p, ...
+    th1_p, th2_p},{0, 0, 0, 0, 0, 0})
 disp('Daempfungsmatrix')
 D = 1/2*(P+P.')
 disp('gyroskopischer Anteil')
@@ -172,4 +172,3 @@ ax(3) = subplot(3,1,3);
 
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)
-disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
