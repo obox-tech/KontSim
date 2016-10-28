@@ -79,7 +79,7 @@
 {\noindent\Huge\bfseries Kontinuierliche\\ Simulation}\\[2\baselineskip] % Title
 {\large 325.040 - Projekt 47 - \textit{Sommersemester 2016}}\\[4\baselineskip] % Tagline or further description
 {\textsc{Fabian Wedenik - 1426866 \newline
-	Alexander Wimmmmmer - 1328958 \newline
+	Alexander Wimmer - 1328958 \newline
 	Felix Hochwallner - 1328839 \newline
 	Oskar Fürnhammer - 1329133}} % Author name
 \\ \\ \\ \\
@@ -188,33 +188,34 @@ MATLAB ist eine numerische Programmiersprache, welche für die schnelle Manipula
 Bevor wir unser System simulieren lassen können, müssen wir unser mechanisches (Ersatz-)System in ein digitales Modell übersetzen. Dazu müssen dem Programm einige Parameter übergeben werden.\\
 Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade und Körper festgelegt. Außerdem wird ein Minimalkoordinatenvektor mit zugehörigen zeitlichen Ableitungen bestimmt.
 \begin{lstlisting}
-%Definition der Systemvariablen
-syms l1 l2 phi_1 phi_2 phi_p1 phi_p2 phi_pp1 phi_pp2
-syms a a_p a_pp mm m1 m2 g I_1 I_2 F xc
+%---- Ermitteln der Bewegungsgleichungen
+%     definieren der Systemvariablen
+syms l1 l2 th_1 th_2 th_p1 th_p2 th_pp1 th_pp2
+syms x x_p x_pp mm m1 m2 g I_1 I_2 F xc
 
 frg=3;                                     %Anzahl der Freiheitsgrade
 n=3;                                       %Anzahl der Koerper
 
-q=[a ; phi_1 ; phi_2];                     %Minimalkoordinaten
-q_p=[a_p ; phi_p1 ; phi_p2];               %zeitliche Ableitungen
-q_pp=[a_pp ; phi_pp1 ; phi_pp2];
+q=[x ; th_1 ; th_2];                     %Minimalkoordinaten
+q_p=[x_p ; th_p1 ; th_p2];               %zeitliche Ableitungen
+q_pp=[x_pp ; th_pp1 ; th_pp2];
 \end{lstlisting}
 \newpage \noindent
 Außerdem benötigen wir noch die Ortvektoren, sowie diverse Koeffizietenmatrizen um später in die Lagrange'sche Gleichung 2. Art einsetzen zu können. 
 \begin{lstlisting}
 %---- Drehmatrix Stab 1
-T_IK1 = [cos(phi_1) sin(phi_1) 0;
-        -sin(phi_1) cos(phi_1) 0;
+T_IK1 = [cos(th_1) sin(th_1) 0;
+        -sin(th_1) cos(th_1) 0;
               0          0     1];
 %---- Drehmatrix Stab 2
-T_IK2 = [cos(phi_2) sin(phi_2) 0;
-        -sin(phi_2) cos(phi_2) 0;
+T_IK2 = [cos(th_2) sin(th_2) 0;
+        -sin(th_2) cos(th_2) 0;
               0          0     1];
 
 %---- Ortsvektoren
-I_r_Sm = [a;0;0];
-I_r_S1 = [a+l1/2*sin(phi_1) ; l1/2*cos(phi_1) ; 0];
-I_r_Q2 = [a+l1*sin(phi_1) ; l1*cos(phi_1) ; 0];
+I_r_Sm = [x;0;0];
+I_r_S1 = [x+l1/2*sin(th_1) ; l1/2*cos(th_1) ; 0];
+I_r_Q2 = [x+l1*sin(th_1) ; l1*cos(th_1) ; 0];
 K1_r_Q1S1 = [0; l1/2; 0];
 K2_r_Q2S2 = [0; l2/2; 0];
 I_r_S2 = I_r_Q2 + T_IK2 * K2_r_Q2S2;
@@ -224,8 +225,8 @@ K1_I_S1 = diag([0 0 I_1]);
 K2_I_S2 = diag([0 0 I_2]);
 
 %---- Winkelgeschwindigkeitsvektoren der Staebe
-K_om1 = [0 ; 0 ; -phi_p1];
-K_om2 = [0 ; 0 ; -phi_p2];
+K_om1 = [0 ; 0 ; -th_p1];
+K_om2 = [0 ; 0 ; -th_p2];
 
 %---- JACOBI-Matrizen der Translation
 J_Tm = jacobian(I_r_Sm, q);
@@ -248,9 +249,7 @@ T = simplify(T);                                             %Vereinfachung
 
 %---- potentielle Energie
 V=-(m1*I_r_S1.'+m2*I_r_S2.')*[0 ; -g ; 0];
-\end{lstlisting}
-Schließlich werden nach Gleichgung (2.1) die Bewgungsgleichungen berechnet und um die Ruhelage linearisiert. Außerdem werden noch die, für eine Zustandsraumdarstellung erforderlichen Matrizen berechnet und ausgegeben.
-\begin{lstlisting}
+
 %---- Ableitungen fuer LAGRANGEsche Gleichung 2. Art
 dTdv = simplify(jacobian(T,q_p).');         %mit transponieren zu Spaltenvektor gemacht
 dTdq = simplify(jacobian(T,q).');
@@ -262,31 +261,31 @@ M = simplify(jacobian(dTdv,q_p))
 disp('System-Vektorfunktion f')
 f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0])
 
-%=================================================
+%==========================================================================
 %---- Linearisierung um die Gleichgewichtslage:
-%     phi_1 = 0, phi_2 = 0, a = 0
+%     th_1 = 0, th_2 = 0, x = 0
 
 disp(' ')
 disp('Elemente der linearisierten Bewegungsgleichung')
 disp('System-Massenmatrix M0')
-M0 = subs(M,{phi_1, phi_2, a},{0, 0, 0})
-f0 = subs(f,{a, phi_1, phi_2, a_p, ...
-    phi_p1, phi_p2},{0, 0, 0, 0, 0, 0});
+M0 = subs(M,{th_1, th_2, x},{0, 0, 0})
+f0 = subs(f,{x, th_1, th_2, x_p, ...
+    th_p1, th_p2},{0, 0, 0, 0, 0, 0});
 disp('Auslenkungs-proportionaler Anteil')
-Q = subs(jacobian(f,q),{a, phi_1, phi_2, a_p, ...
-    phi_p1, phi_p2},{0, 0, 0, 0, 0, 0})
+Q = subs(jacobian(f,q),{x, th_1, th_2, x_p, ...
+    th_p1, th_p2},{0, 0, 0, 0, 0, 0})
 disp('Steifigkeitsmatrix K')
 K = 1/2*(Q+Q.')
 disp('Matrix der nichtkonservativen Kraefte')
 N = 1/2*(Q-Q.')
 disp('gesschw.-proportionaler Anteil')
-P = subs(jacobian(f,q_p),{a, phi_1, phi_2, a_p, ...
-    phi_p1, phi_p2},{0, 0, 0, 0, 0, 0})
+P = subs(jacobian(f,q_p),{x, th_1, th_2, x_p, ...
+    th_p1, th_p2},{0, 0, 0, 0, 0, 0})
 disp('Daempfungsmatrix')
 D = 1/2*(P+P.')
 disp('gyroskopischer Anteil')
 G = 1/2*(P-P.')
- \end{lstlisting}
+\end{lstlisting}
 
 \section{Zustandsraumdarstellung und Reglerentwurf}
 Um die Auslegung des LQ-Reglers effizient gestalten zu können transformieren wir unser Problem in den Zustandsraum und berechnen die Regelunskonstante. 
@@ -297,13 +296,7 @@ XXXXXX \\
 XXXXX \\
 
 \begin{lstlisting}
-%============================================
 %----Erstellen und Simulieren der Zustandsraumdarstellung
-syms x th1 th2 x_p th1_p th2_p
-syms x_pp th1_pp th2_pp
-
-y = [q.',q_p.'].';
-y_p = [q_p.',x_pp , th1_pp , th2_pp].';
 
 A = [zeros(3),eye(3);
     -M0^(-1)*Q, -M0^(-1)*P];
@@ -352,7 +345,6 @@ u =0.2*ones(size(t));
 %----Simulation des erstellten Systems ueber gegebene Zeit mit bekanntem
 %Input
 [y,t,x]=lsim(sys_cl,u,t);
-
 \end{lstlisting}
 
 \section{Simulation und Ausgabe}
@@ -367,20 +359,32 @@ ax(1) = subplot(3,1,1);
     grid on                           %da kann man sich noch frei austoben.
 ax(2) = subplot(3,1,2);               %relativ einfach verstaendliche 
     plot(ax(2),t,y(:,2),'r');         %loesung. Ws nicht Laufzeit optimiert
-    title(ax(2),'angle theta 1');
+    title(ax(2),'angle th 1');
     grid on
 ax(3) = subplot(3,1,3);
     plot(ax(3),t,y(:,3),'g');
-    title(ax(3),'angle theta 2');
+    title(ax(3),'angle th 2');
     grid on
 
+%----Plotten der Ausgangsgroessen
+% [AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
+% hold on
+% line(t,y(:,3),'parent',AX(2),'color','g')
+% hold off
+% set(get(AX(1),'Ylabel'),'String','cart position (m)')
+% set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
+% title('Step Response with LQR Control')
 
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)
 disp('Das System ist stabil, da der Realteil aller Eigenwerte negativ ist!')
-
 \end{lstlisting}
-Wie sich im MATLAB Code schon erkennen lässt sind die Realteile aller Eigenwerte negativ. Somit ist das betrachtete System stabil!
+Wie sich in der Ausgabe erkennen lässt sind die Realteile aller Eigenwerte negativ. Somit ist das betrachtete System stabil!
+\begin{figure}[h]
+\centering  %Zentrierung
+{\includegraphics[width=5cm]{Eigenwerte}}
+\caption{Ausgabe der Eigenwerte}
+\end{figure}
 
 \begin{figure}[h]
 \centering  %Zentrierung
