@@ -127,7 +127,6 @@ Viel Spaß beim Lesen wünschen
 \renewcommand{\thechapter}{1}
 Sowohl mit MATLAB als auch MapleSim soll ein mechanisches Modell eines geregelten Doppelpendels realisiert werden. Dabei soll unter anderem ein Vergleich zwischen klassischer textueller Programmierung in MATLAB und grafischer, blockorientierter Modellierung in MapleSim gezogen werden.
 \\
-\\
 \\Implementieren Sie das Modell mit MATLAB. Führen Sie einen Simulationslauf mit den angegebenen Parametern durch, plotten Sie die Auslenkung $x$ sowie die beiden Winkel $\theta_{1}$ und $\theta_{2}$ über der Zeit und interpretieren Sie die Ergebnisse. Berechnen Sie mit MATLAB auch die Eigenwerte. Ist das System stabil? Begründen Sie Ihre Aussage.
 \\
 \\
@@ -146,8 +145,8 @@ Eine Masse $ m_{m} $ gleitet reibungsfrei auf einer horizontalen Ebene. An der M
 {\includegraphics[width=15cm]{Modell_Doppelpendel}}
 \caption{Mechanisches Modell eines stehenden Doppelpendels}
 \end{figure}
+\newpage
 \noindent
-
 Da wir bei der Berechnung der Matrizen, welche für eine Zustandsraumdarstellung erfoderlich sind, einige Probleme hatten entschlossen wir uns sicherheitshalber mittels Euler-Lagrange-Formalismen auch die Bewegungsgleichungen neu aufzustellen und in MATLAB linearisieren zu lassen. Die Bewegungsgleichung erhalten wir mithilfe der Langrange Gleichung 2.Art.
 
 \begin{equation}
@@ -266,7 +265,7 @@ M = simplify(jacobian(dTdv,q_p))
 disp('System-Vektorfunktion f')
 f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0])
 
-%==========================================================================
+%=============================================================
 %---- Linearisierung um die Gleichgewichtslage:
 %     th1 = 0, th2 = 0, x = 0
 
@@ -346,11 +345,35 @@ u =0.2*ones(size(t));
 %Input
 [y,t,x]=lsim(sys_cl,u,t);
 \end{lstlisting}
-\begin{figure}[h]
-\centering  %Zentrierung
-{\includegraphics[width=10cm]{MatrixAB}}
-\caption{Ausgabe der Matrizen A und B}
-\end{figure}
+Die Form der Zustandsraumdartsellung, mit den Matrizen A und B siehe Abbildung(3.2), sieht folgendermaßen aus:\\\\
+\begin{equation}
+\label{eqn:Zustandraumdarstellung}
+\mathbf{\dot{x}}=A \mathbf{x}+B \mathbf{u}
+\end{equation}
+
+$$
+A=
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & -0.9 & 0.1 & 0 & 0 & 0 & 0 \\
+0 & 52.8 & -25.5 & 0 & 0 & 0 & 0 \\
+0 & -54.1 & 48.1 & 0 & 0 & 0 & 0 \\
+-1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{bmatrix}
+;
+B=
+\begin{bmatrix}
+0 \\
+0\\
+0\\
+4.9\\
+-12.7\\
+3.2 \\
+0\\
+\end{bmatrix}
+$$
 \section{Simulation und Ausgabe}
 Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung XXXX über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
 \begin{lstlisting}
