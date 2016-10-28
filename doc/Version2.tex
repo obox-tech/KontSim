@@ -293,7 +293,7 @@ G = 1/2*(P-P.')
 \end{lstlisting}
 
 \section{Zustandsraumdarstellung und Reglerentwurf}
-Um die Auslegung des LQ-Reglers effizient gestalten zu können transformieren wir unser Problem in den Zustandsraum. Wir berechnen zunächst die benötigten Matrizen. Durch ersetzen der Parameter durch die Zahlenwerte, kann die Regelunskonstante berechnet werden.  Der Befehl ss konvertiert unser System nach Festlegung der Ein- und Augänge in den Zustandsraum. Schließlich erfolgt die Simulation mit der gewünschten Simulationsdauer und des konstanten Offsets.
+Um die Auslegung des LQ-Reglers effizient gestalten zu können transformieren wir unser Problem in den Zustandsraum. Wir berechnen zunächst die benötigten Matrizen. Durch ersetzen der symbolischen Variablen durch ihre Zahlenwerte, kann das System numerisch verarbeitet werden. Mit dem Befehl lqr() lassen sich in Matlab aus den systembeschreibenden Matrizen, die Rückkopplungsparameter für eine LQ-Regelung berechnen. Der Befehl ss() konvertiert unser System nach Festlegung der Ein- und Augänge in den Zustandsraum. Schließlich erfolgt die Simulation mit der gewünschten Simulationsdauer und des konstanten Offsets.
 
 \begin{lstlisting}
 %----Erstellen und Simulieren der Zustandsraumdarstellung
@@ -346,7 +346,11 @@ u =0.2*ones(size(t));
 %Input
 [y,t,x]=lsim(sys_cl,u,t);
 \end{lstlisting}
-
+\begin{figure}[h]
+\centering  %Zentrierung
+{\includegraphics[width=10cm]{MatrixAB}}
+\caption{Ausgabe der Matrizen A und B}
+\end{figure}
 \section{Simulation und Ausgabe}
 Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung XXXX über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
 \begin{lstlisting}

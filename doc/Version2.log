@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.12)  28 OCT 2016 10:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.12)  28 OCT 2016 10:40
 entering extended mode
 **./Version2.tex
 (Version2.tex
@@ -1034,111 +1034,127 @@ Overfull \hbox (5.76128pt too wide) in paragraph at lines 295--295
 []\OT1/cmr/bx/n/14.4 Zustandsraumdarstellung und Reg-ler-ent-wurf 
  []
 
-[11] [12] <Eigenwerte.png, id=300, 129.48375pt x 130.23656pt>
+[11] <MatrixAB.png, id=258, 439.6425pt x 280.04625pt>
+File: MatrixAB.png Graphic file (type png)
+ <use MatrixAB.png>
+Package pdftex.def Info: MatrixAB.png used on input line 351.
+(pdftex.def)             Requested size: 284.52756pt x 181.2459pt.
+
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.356 \begin{lstlisting}
+                         <./MatrixAB.png>]
+<Eigenwerte.png, id=290, 129.48375pt x 130.23656pt>
 File: Eigenwerte.png Graphic file (type png)
-
-<use Eigenwerte.png>
-Package pdftex.def Info: Eigenwerte.png used on input line 384.
+ <use Eigenwerte.png>
+Package pdftex.def Info: Eigenwerte.png used on input line 388.
 (pdftex.def)             Requested size: 142.26378pt x 143.10564pt.
- <AusgabeMATLAB.png, id=301, 421.575pt x 316.18124pt>
-File: AusgabeMATLAB.png Graphic file (type png)
 
-<use AusgabeMATLAB.png>
-Package pdftex.def Info: AusgabeMATLAB.png used on input line 390.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<AusgabeMATLAB.png, id=291, 421.575pt x 316.18124pt>
+File: AusgabeMATLAB.png Graphic file (type png)
+ <use AusgabeMATLAB.png>
+Package pdftex.def Info: AusgabeMATLAB.png used on input line 394.
 (pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
 
-Overfull \hbox (81.79134pt too wide) in paragraph at lines 390--391
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 394--395
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
-}) has been already used, duplicate ignored
+[13] [14pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.4.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.395 \chapter
-              {Implementierung in MalpeSim} <./Eigenwerte.png>] [14pdfTeX warni
-ng (ext4): destination with the same identifier (name{figure.4.3}) has been alr
-eady used, duplicate ignored
+l.399 \chapter
+              {Implementierung in MalpeSim}pdfTeX warning (ext4): destination w
+ith the same identifier (name{figure.4.4}) has been already used, duplicate ign
+ored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.395 \chapter
-              {Implementierung in MalpeSim} <./AusgabeMATLAB.png (PNG copy)>]
+l.399 \chapter
+              {Implementierung in MalpeSim} <./Eigenwerte.png> <./AusgabeMATLAB
+.png (PNG copy)>]
  .
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--409
+Underfull \hbox (badness 10000) in paragraph at lines 404--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--409
+Underfull \hbox (badness 10000) in paragraph at lines 404--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--409
+Underfull \hbox (badness 10000) in paragraph at lines 404--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--409
+Underfull \hbox (badness 10000) in paragraph at lines 404--413
 
  []
 
 [15
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 412--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--429
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 427.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 431.
 [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 427.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 431.
  (Version2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 427.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 427.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 431.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 431.
 Package rerunfilecheck Info: File `Version2.out' has not changed.
 (rerunfilecheck)             Checksum: CC15D70C9744DF2A3AA5410E13F464FF;625.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 427.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 431.
  ) 
 Here is how much of TeX's memory you used:
- 10489 strings out of 493334
- 144933 string characters out of 3139239
+ 10495 strings out of 493334
+ 145022 string characters out of 3139239
  459996 words of memory out of 3000000
- 13669 multiletter control sequences out of 15000+200000
+ 13673 multiletter control sequences out of 15000+200000
  8701 words of font info for 31 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,12n,43p,490b,1867s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,12n,43p,649b,1867s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Alexander\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi
 600\tcrm0900.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
@@ -1154,9 +1170,9 @@ r8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Version2.pdf (16 pages, 372655 bytes).
+Output written on Version2.pdf (16 pages, 374994 bytes).
 PDF statistics:
- 433 PDF objects out of 1000 (max. 8388607)
- 212 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 436 PDF objects out of 1000 (max. 8388607)
+ 213 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 
