@@ -83,7 +83,7 @@ Q = subs(jacobian(f,q),{x, th1, th2, x_p, ...
     th1_p, th2_p},{0, 0, 0, 0, 0, 0})
 disp('Steifigkeitsmatrix K')
 K = 1/2*(Q+Q.')
-disp('Matrix der nichtkonservativen Kräfte')
+disp('Matrix der nichtkonservativen Kraefte')
 N = 1/2*(Q-Q.')
 disp('gesschw.-proportionaler Anteil')
 P = subs(jacobian(f,q_p),{x, th1, th2, x_p, ...
