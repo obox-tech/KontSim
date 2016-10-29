@@ -106,9 +106,9 @@
 
 
 %---------------------------------------------------------------------------------------------------Vorwort------------------------------------------------------------------------------------------------
-\renewcommand{\thechapter}{} %um ziffern vor überschriften im tableofcontents zu unterdrücken
+%\renewcommand{\thechapter}{} %um ziffern vor überschriften im tableofcontents zu unterdrücken
 \chapter{Vorwort}
-\renewcommand{\thechapter}{1}
+%\renewcommand{\thechapter}{1}
 %
 Sehr geehrte Damen und Herren, liebe Leser und Leserinnen!
 \\
@@ -122,9 +122,9 @@ Viel Spaß beim Lesen wünschen
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %												Chapter ****
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-\renewcommand{\thechapter}{}
+%\renewcommand{\thechapter}{}
 \chapter{Aufgabenstellung}
-\renewcommand{\thechapter}{1}
+%\renewcommand{\thechapter}{1}
 Sowohl mit MATLAB als auch MapleSim soll ein mechanisches Modell eines geregelten Doppelpendels realisiert werden. Dabei soll unter anderem ein Vergleich zwischen klassischer textueller Programmierung in MATLAB und grafischer, blockorientierter Modellierung in MapleSim gezogen werden.
 \\
 \\Implementieren Sie das Modell mit MATLAB. Führen Sie einen Simulationslauf mit den angegebenen Parametern durch, plotten Sie die Auslenkung $x$ sowie die beiden Winkel $\theta_{1}$ und $\theta_{2}$ über der Zeit und interpretieren Sie die Ergebnisse. Berechnen Sie mit MATLAB auch die Eigenwerte. Ist das System stabil? Begründen Sie Ihre Aussage.
@@ -132,9 +132,9 @@ Sowohl mit MATLAB als auch MapleSim soll ein mechanisches Modell eines geregelte
 \\
 Bauen Sie das Modell mit MapleSim auf, testen Sie das Modell mit den angegebenen Parametern und vergleichen Sie die Ergebnisse mit jenen aus der MATLAB-Simulation.
 
-\renewcommand{\thechapter}{} %um ziffern vor überschriften zu unterdrücken
+%\renewcommand{\thechapter}{} %um ziffern vor überschriften zu unterdrücken
 \chapter{Modellbildung}
-\renewcommand{\thechapter}{2}
+%\renewcommand{\thechapter}{2}
 
 Eine Masse $ m_{m} $ gleitet reibungsfrei auf einer horizontalen Ebene. An der Masse ist ein Stab $ (m_{1}, I_{1}, l_{1}) $ über ein reibungsfreies Gelenk befestigt. An seinem anderen Ende ist der Stab $m_{1} $mit einem weiteren Stab $ (m_{2}, I_{2}, l_{2}) $ gelenkig verbunden.
 \\
@@ -142,7 +142,7 @@ Eine Masse $ m_{m} $ gleitet reibungsfrei auf einer horizontalen Ebene. An der M
 %Modellbild
 \begin{figure}[h]
 \centering  %Zentrierung
-{\includegraphics[width=15cm]{Modell_Doppelpendel}}
+{\includegraphics[width=\textwidth]{Modell_Doppelpendel}}
 \caption{Mechanisches Modell eines stehenden Doppelpendels}
 \end{figure}
 \newpage
@@ -175,9 +175,9 @@ Damit erhalten wir schließlich die Bewgungsgleichungen in folgender Form:
 M(q)\ddot{q} + f(q,\dot{q}) = 0
 \end{equation}
 Diese linearisieren wir nun um die Ruhelage, indem wir die Lagekoordinaten $\theta_{1}, \theta_{2}$ und $x$, sowie ihre Ableitung, nullsetzen.
-\renewcommand{\thechapter}{}
+%\renewcommand{\thechapter}{}
 \chapter{Implementierung in MATLAB}
-\renewcommand{\thechapter}{3}
+%\renewcommand{\thechapter}{3}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% *titel von section eventuell subsection wegen uebersicht*
 %
@@ -350,9 +350,20 @@ Die Form der Zustandsraumdartsellung, mit den Matrizen A und B siehe Abbildung(3
 \label{eqn:Zustandraumdarstellung}
 \mathbf{\dot{x}}=A \mathbf{x}+B \mathbf{u}
 \end{equation}
-
-$$
-A=
+\\
+Mit den zugehörigen numerischen Werten ergibt sich:
+\\ \\
+\begin{equation*}
+\begin{bmatrix}
+0 \\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+\end{bmatrix}
+=
 \begin{bmatrix}
 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
@@ -362,8 +373,16 @@ A=
 0 & -54.1 & 48.1 & 0 & 0 & 0 & 0 \\
 -1 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{bmatrix}
-;
-B=
+\begin{bmatrix}
+0 \\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+\end{bmatrix}
++
 \begin{bmatrix}
 0 \\
 0\\
@@ -373,7 +392,16 @@ B=
 3.2 \\
 0\\
 \end{bmatrix}
-$$
+\begin{bmatrix}
+0 \\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+\end{bmatrix}
+\end{equation*}
 \section{Simulation und Ausgabe}
 Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung XXXX über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
 \begin{lstlisting}
@@ -418,39 +446,50 @@ Wie sich in der Ausgabe erkennen lässt sind die Realteile aller Eigenwerte nega
 \caption{MATLAB Plot}
 \end{figure}
 
-\renewcommand{\thechapter}{}
+%\renewcommand{\thechapter}{}
 \chapter{Implementierung in MalpeSim}
-\renewcommand{\thechapter}{4}
+%\renewcommand{\thechapter}{4}
 Nachdem das vorherige Kapitel ausschließlich der Implementierung in MATLAB gewidment wurde, beschäftigt sich dieses Kapitel nun mit der Umsetzung mittels einer \textit{nicht klassischen}, blockorientierten, grafischen Programmierung in MapleSim. \\
 Wie bereits erwähnt funktioniert die Programmierung in MapleSim grafisch. Es wird zuerst das Modell (in unserem Fall das geregelte mechanische Doppelpendel) im MapleSim GUI nachgebildet. Anschließend können Signale direkt an diesem Model abgegriffen und ins System rückgeführt werden. Dadurch lassen sich selbst komplexe dynamische Systeme aus allen Bereichen der Natur- und Ingeneurswissenschaften vergleichsweise einfach modellieren.
 \section{Modellbildung}
-Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können wurden direkt die Größen aus der Angabe verwendet. Die Materialparamter sind selbstverständlich die selben, wie die, die auch schon in den anderen Kapiteln verwendet wurden. 
+Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können wurden die Größen aus der Angabe direkt verwendet. Die Materialparamter sind selbstverständlich die, die auch schon in den anderen Kapiteln verwendet wurden. \\
 \begin{figure}[h]
 \centering  %Zentrierung
-{\includegraphics[width=10cm]{MapleSimModel}}
-\caption{Model in MapleSim}
+\label{MapleSimModell}
+{\includegraphics[width=\textwidth]{MapleSimModel}}
+\caption{Modell in MapleSim}
 \end{figure}
+\newpage \noindent
 Das Pendel wurde aus Komponenten der \textit{Multibody}-Bibliothek aufgebaut. Es besteht aus einem festen Rahmen (\textit{fixed frame}), zwei Drehgelenken (\textit{revolutes}), einem Schlitten (\textit{prismatic}) und den zwei Stäben. \\
-Da innerhalb der Standardbibliotheken keine Kompnenten gab, die die geforderten mechanischen Eigenschaften (Masserverteilung und somit Schwerpunkt und Trägheitstensor) erfüllten, wurden die Stäbe aus jeweils zwei starren Körpern (\textit{rigid body frames}) und einer Punktmasse (\textit{point mass}) nachgebildet. Die Komponenten der Stäbe wurden aus Gründen der Übersichtlichkeit zu Subsystemen zusammengefasst.
+Da innerhalb der Standardbibliotheken keine Kompnenten gab, die die geforderten mechanischen Eigenschaften erfüllten, wurden die Stäbe aus jeweils zwei starren Körpern (\textit{rigid body frames}) und einer Punktmasse (\textit{point mass}) nachgebildet. Die Komponenten der Stäbe wurden aus Gründen der Übersichtlichkeit zu Subsystemen zusammengefasst.
 \\\\
 
 
 \section{Regelung}
-Auch der Bau des Regler ist vergleichweise einfach. Die nötigen (Zustands-)Größen $\theta_{1}$, $\theta_{2}$ und $x$ können direkt ausgelesen, abgegriffen und weiterverwendet werden. \\
-$\theta_{1}$ kann direkt ausglesen werden und wird unverändert dem Regelungssubsystem übergeben. Für $\theta_{2}$ wird der Winkel, den die beiden Stäbe miteinander einschließen, gemessen und zu $\theta_{1}$ addiert. Der Abstand des Schlittens vom Koordinatenursprung $x$ kann auch direkt ausgelesen und weitegeben werden. 
+Auch der Bau des Regler ist vergleichweise einfach. Die nötigen Zustandsgrößen $\theta_{1}$, $\theta_{2}$ und $x$ können direkt abgegriffen und weiterverwendet werden. \\
+$\theta_{1}$ wird dabei unverändert dem Regelungssubsystem übergeben. Für $\theta_{2}$ wird der Winkel, den die beiden Stäbe miteinander einschließen, gemessen und zu $\theta_{1}$ addiert. Der Abstand des Schlittens vom Koordinatenursprung $x$ kann auch direkt ausgelesen und weitegeben werden. 
+Wie schon bei den Stäben wurde die Regelung zu einem Subsystem zusammengefasst um eine hohe Übersicht gewährleisten zu können. Dieser Regelung möchten wir uns nun widmen. \newpage
 \begin{figure}
 \centering  %Zentrierung
-{\includegraphics[width=10cm]{MapleSimRegelungCut}}
+\label{SubsystemRegelung}
+{\includegraphics[width=7cm]{MapleSimRegelungCut}}
 \caption{Subsystem Regelung}
 \end{figure}
-Wie schon bei den Stäben wurde die Regelung zu einem Subsystem zusammengefasst um eine hohe Übersicht gewährleisten zu können. Dieser Regelung möchten wir uns nun widmen.
-
-
-Die Rückstellkraft ...
-\\ \\
-eingänge u1 - u6 und ausgang y labeln? \\
-simulation? \\
-eigenwertberechnung? \\
-
-abschließende worte? (vergleich, pros-cons, erfahrung, etc.)
+\noindent
+Wie der Angabe zu entnehmen ist, bedarf es einer Regelung um das instabile System im Gleichgewicht zu halten. Dabei wird die Kraft als Regelung in Form einer Zustandsrückführung, kombiniert mit einer Positionsregelung der Form
+\begin{equation}
+\label{Auslenkungen}
+e = x_{e} - x \qquad \dot{e} = - \dot{x} \qquad i_{in} = \int_{t_{0}}^{t_{end}} e  dt,
+\end{equation}
+angesetzt:
+\begin{equation}
+\label{Rueckstellkraft}
+F = k_{x}e + k_{\dot{x}}\dot{x} + k_{in}i_{in} + k_{\theta_{1}}\theta_{1} + k_{\theta_{2}}\theta_{2} + k_{\dot{\theta}_{1}}\dot{\theta}_{1} + k_{\dot{\theta}_{2}}\dot{\theta}_{2}
+\end{equation}
+Nach Gleichung \ref{Rueckstellkraft} ist die Rückstellkraft also eine Linearkombination der Winkel und ihren zeitlichen Ableitungen, sowie einer
+momentanen Auslenkungsdifferenz des Schlittens vom Sollwerd, mit der zugehörigen zeitlichen Ableitung und dem zeitlichen Integral [über besagte Auslenkung]. \\
+Wie sich in Abbildung \ref{MapleSimModell} erkennen lässt werden die Winkel jeweils doppelt übergeben. Intern wird dann jeweils ein Signal dieser Signalpaare differenziert. Anschließend werden die Signale mit den zugehörigen Rückkopplungparametern $k_{\theta_{1}}$ und $k_{\theta_{2}}$ beziehungsweise $k_{\dot{\theta}_{1}}$ und $k_{\dot{\theta}_{2}}$ in den Addierern $A_{1}$ und $A_{2}$ aufsummiert. \\
+Ein ähnliches Prodzedere ergibt sich auch für die anderen beiden Eingänge $x$ und  $\dot{x}$. Mit der Auslenkung $x$ wird nach den Gleichungen \ref{Auslenkungen} die Abweichung $e$ vom Sollzustand $x_{e}$ berechnet, welche anschließend im Integrationsglied $I_{1}$ integriert wird. Auch hier werden die Paramter wieder mit den zugehörigen Koeffizienten $k_{x}$, $k_{\dot{x}}$ und $k_{in}$ gewichtet und anschließend in den Addieren $A3_{1}$ und $A3_{2}$ summiert. \\
+Da die Rückstellkraft nicht unendlich groß werden darf wurde abschließend noch eine Kraftbegrenzung $L_{1}$ hinzugefügt, welche die Rückstellkraft $F$ auf maximal 10 [N] beschränkt. \\
+Damit ist die Regelung abgeschlossen und die Kraft wird am Ausgang $y1$ (Siehe Abbildung \ref{MapleSimModell}) ausgegeben und mit dem Element \textit{applied world force} ins mechanische System rückgeführt.
 \end{document}
