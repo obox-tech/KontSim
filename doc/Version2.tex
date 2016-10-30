@@ -162,7 +162,7 @@ Um den translatorischen Anteil zu berechnen werden die Geschwindigkeitsvektoren 
 T_{trans}=\dfrac{1}{2} m \vec{v}^{2} 
 \end{equation}
 \begin{equation}
-\vec{v}=Jv*\dot{q}
+\vec{v}=J_{v}\dot{\vec{q}}
 \end{equation}
 Die Jacobi-Matrix $J$ besteht aus den partiellen Ableitungen der Ortsvektoren zu den Schwerpunkten nach den Minimalkoordinaten.
 Der rotatorische Anteil wird mit Hilfe der Winkelgeschwindigkeitsvektoren der Stäbe und der Trägheitstensoren berechnet.
@@ -420,15 +420,6 @@ ax(3) = subplot(3,1,3);
     plot(ax(3),t,y(:,3),'g');
     title(ax(3),'angle th 2');
     grid on
-
-%----Plotten der Ausgangsgroessen
-% [AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
-% hold on
-% line(t,y(:,3),'parent',AX(2),'color','g')
-% hold off
-% set(get(AX(1),'Ylabel'),'String','cart position (m)')
-% set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
-% title('Step Response with LQR Control')
 
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)

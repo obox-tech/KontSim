@@ -161,14 +161,5 @@ ax(3) = subplot(3,1,3);
     title(ax(3),'angle th 2');
     grid on
 
-%----Plotten der Ausgangsgroessen
-% [AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
-% hold on
-% line(t,y(:,3),'parent',AX(2),'color','g')
-% hold off
-% set(get(AX(1),'Ylabel'),'String','cart position (m)')
-% set(get(AX(2),'Ylabel'),'String','pendulum angles (radians)')
-% title('Step Response with LQR Control')
-
 %----Berechnung der Eigenwerte
 Eigenwerte = eig(Ac)
