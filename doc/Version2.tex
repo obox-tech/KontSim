@@ -337,7 +337,10 @@ u =0.2*ones(size(t));
 Die Form der Zustandsraumdartsellung, mit den Matrizen $A_{c}$ und $B_{c}$ siehe Abbildung(3.2), sieht folgendermaßen aus:\\\\
 \begin{equation}
 \label{eqn:Zustandraumdarstellung}
-\mathbf{\dot{x}}=A_{c} \mathbf{x}+B_{c} u
+\mathbf{\dot{x}}=A_{c} \mathbf{x}+B_{c} u 
+\end{equation}
+\begin{equation}
+\mathbf{y}=C_{c} \mathbf{x}+D_{c} u
 \end{equation}
 \\
 Mit den zugehörigen numerischen Werten ergibt sich:
@@ -465,13 +468,10 @@ Da hier keine mathematischen Transformationen mehr nötig sind um das Doppelpend
 \end{figure}
 \newpage \noindent
 Das Pendel wurde aus Komponenten der \textit{Multibody}-Bibliothek aufgebaut. Es besteht aus einem festen Rahmen (\textit{fixed frame}), zwei Drehgelenken (\textit{revolutes}), einem Schlitten (\textit{prismatic}) und den zwei Stäben. \\
-Da es innerhalb der Standardbibliotheken keine Kompnenten gab, die die geforderten mechanischen Eigenschaften erfüllten, wurden die Stäbe aus jeweils zwei starren Körpern (\textit{rigid body frames}) und einer Punktmasse (\textit{point mass}) nachgebildet. Die Komponenten der Stäbe wurden aus Gründen der Übersichtlichkeit zu Subsystemen zusammengefasst.
-\\\\
-
-
+Da es innerhalb der Standardbibliotheken keine Kompnenten gab, die die geforderten mechanischen Eigenschaften erfüllen, wurden die Stäbe aus jeweils zwei starren Körpern (\textit{rigid body frames}) und einer Punktmasse (\textit{point mass}) nachgebildet. Die Komponenten der Stäbe wurden aus Gründen der Übersichtlichkeit zu Subsystemen zusammengefasst. Selbstverständlich sind die Eigenschaften (Abmessungen, Tägheitstensoren und Schwerpunktsabstände) der nachgebildeten Stäbe identisch zu jenen aus der Angabe.
 \section{Regelung}
-Auch der Bau des Regler ist vergleichweise einfach. Die nötigen Zustandsgrößen $\theta_{1}$, $\theta_{2}$ und $x$ können direkt abgegriffen und weiterverwendet werden. \\
-$\theta_{1}$ wird dabei unverändert dem Regelungssubsystem übergeben. Für $\theta_{2}$ wird der Winkel, den die beiden Stäbe miteinander einschließen, gemessen und zu $\theta_{1}$ addiert. Der Abstand des Schlittens vom Ursprung des Koordinatensystems $x$ kann auch direkt ausgelesen und weitegeben werden. 
+Auch der Bau des Reglers ist vergleichweise einfach. Die nötigen Zustandsgrößen $\theta_{1}$, $\theta_{2}$ und $x$ können direkt abgegriffen und weiterverwendet werden. \\
+$\theta_{1}$ wird dabei unverändert dem Regelungssubsystem übergeben. Für $\theta_{2}$ wird der Winkel, den die beiden Stäbe miteinander einschließen, gemessen und zu $\theta_{1}$ addiert. Der Abstand des Schlittens vom Ursprung des Koordinatensystems $x$ kann auch direkt ausgelesen und weitergeben werden. 
 Wie schon bei den Stäben wurde die Regelung zu einem Subsystem zusammengefasst um eine hohe Übersicht gewährleisten zu können. Dieser Regelung möchten wir uns nun widmen. \newpage
 \begin{figure}
 \centering  %Zentrierung
@@ -493,7 +493,7 @@ F = k_{x}e + k_{\dot{x}}\dot{x} + k_{in}i_{in} + k_{\theta_{1}}\theta_{1} + k_{\
 Nach Gleichung \ref{Rueckstellkraft} ist die Rückstellkraft also eine Linearkombination der Winkel und ihren zeitlichen Ableitungen, sowie einer
 momentanen Auslenkungsdifferenz des Schlittens vom Sollwert, mit der zugehörigen zeitlichen Ableitung und dem zeitlichen Integral [über besagte Auslenkung]. \\ \\
 Wie sich in Abbildung \ref{MapleSimModell} erkennen lässt werden die Winkel jeweils doppelt übergeben. Intern wird dann jeweils ein Signal dieser Signalpaare differenziert. Anschließend werden die Signale mit den zugehörigen Rückkopplungparametern $k_{\theta_{1}}$ und $k_{\theta_{2}}$ beziehungsweise $k_{\dot{\theta}_{1}}$ und $k_{\dot{\theta}_{2}}$ in den Addierern $A_{1}$ und $A_{2}$ aufsummiert. \\
-Ein ähnliches Prodzedere ergibt sich auch für die anderen beiden Eingänge $x$ und  $\dot{x}$. Mit der Auslenkung $x$ wird nach den Gleichungen \ref{Auslenkungen} die Abweichung $e$ vom Sollzustand $x_{e}$ berechnet, welche anschließend im Integrationsglied $I_{1}$ integriert wird. Auch hier werden die Paramter wieder mit den zugehörigen Koeffizienten $k_{x}$, $k_{\dot{x}}$ und $k_{in}$ gewichtet und anschließend in den Addieren $A3_{1}$ und $A3_{2}$ summiert. \\
+Ein ähnliches Prodzedere ergibt sich auch für die anderen beiden Eingänge $x$ und  $\dot{x}$. Mit der Auslenkung $x$ wird nach den Gleichungen \ref{Auslenkungen} die Abweichung $e$ vom Sollzustand $x_{e}$ berechnet, welche anschließend im Integrationsglied $I_{1}$ integriert wird. Auch hier werden die Paramter wieder mit den zugehörigen Koeffizienten $k_{x}$, $k_{\dot{x}}$ und $k_{in}$ gewichtet und anschließend in den Addierern $A3_{1}$ und $A3_{2}$ summiert. \\
 Da die Rückstellkraft nicht unendlich groß werden darf wurde abschließend noch eine Kraftbegrenzung $L_{1}$ hinzugefügt, welche die Rückstellkraft $F$ auf maximal 10 [N] beschränkt. \\
 Damit ist die Regelung abgeschlossen und die Kraft wird am Ausgang $y1$ (Siehe Abbildung \ref{MapleSimModell}) ausgegeben und mit dem Element \textit{applied world force} in das mechanische System rückgeführt. \\
 Um die Zuordnung innerhalb des Regelungssubsystems zu vereinfachen wurde noch eine Korrespondenztabelle erstellt. Die Eingänge werden (nach Abbildung \ref{SubsystemRegelung}) von oben nach unten aufgezählt. \\ \\
