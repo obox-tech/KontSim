@@ -117,7 +117,7 @@ Das vorliegende Protkoll wurde im Rahmen der Vorlesung und Übung \textit{Kontin
 Dadurch soll unter anderem ein Vergleich zwischen klassischer textuelle Programmierung und grafischer, blockorientierter Modellierung gezogen werden. Betreut wurde das Projekt der Gruppe 47 von Fabian Germ.
 \\
 \\
-Viel Spaß beim Lesen wünschen
+Viel Spaß beim Lesen!
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %												Chapter ****
@@ -174,7 +174,7 @@ Damit erhalten wir schließlich die Bewgungsgleichungen in folgender Form:
 \begin{equation}
 M(q)\ddot{q} + f(q,\dot{q}) = 0
 \end{equation}
-Diese linearisieren wir nun um die Ruhelage, indem wir die Lagekoordinaten $\theta_{1}, \theta_{2}$ und $x$, sowie ihre Ableitung, nullsetzen.
+Die Ruhelage des Systems finden wir, indem man zuerst die Ableitungen der Lagekoordinaten $\theta_{1}, \theta_{2}$ und $x$ nullsetzt. Anschließend Linearisiert man mithilfe einer Taylorreihe um Ruhelage und streicht alle Glieder höherer Ordnung.
 %\renewcommand{\thechapter}{}
 \chapter{Implementierung in MATLAB}
 %\renewcommand{\thechapter}{3}
@@ -192,11 +192,11 @@ Zuerst werden Systemvariablen deklariert, sowie die Anzahl der Freiheitsgrade un
 syms l1 l2 th1 th2 th1_p th2_p th1_pp th2_pp
 syms x x_p x_pp mm m1 m2 g I_1 I_2 F xc
 
-frg=3;                                     %Anzahl der Freiheitsgrade
-n=3;                                       %Anzahl der Koerper
+frg=3;             %Anzahl der Freiheitsgrade
+n=3;               %Anzahl der Koerper
 
-q=[x ; th1 ; th2];                     %Minimalkoordinaten
-q_p=[x_p ; th1_p ; th2_p];               %zeitliche Ableitungen
+q=[x ; th1 ; th2];              %Minimalkoordinaten
+q_p=[x_p ; th1_p ; th2_p];      %zeitliche Ableitungen
 q_pp=[x_pp ; th1_pp ; th2_pp];
 \end{lstlisting}
 \newpage \noindent
@@ -348,20 +348,20 @@ u =0.2*ones(size(t));
 Die Form der Zustandsraumdartsellung, mit den Matrizen A und B siehe Abbildung(3.2), sieht folgendermaßen aus:\\\\
 \begin{equation}
 \label{eqn:Zustandraumdarstellung}
-\mathbf{\dot{x}}=A \mathbf{x}+B \mathbf{u}
+\mathbf{\dot{x}}=A \mathbf{x}+B u
 \end{equation}
 \\
 Mit den zugehörigen numerischen Werten ergibt sich:
 \\ \\
 \begin{equation*}
 \begin{bmatrix}
-0 \\
-0\\
-0\\
-0\\
-0\\
-0\\
-0\\
+\dot{x} \\
+\dot{\theta_{1}}\\
+\dot{\theta_{2}}\\
+\ddot{x}\\
+\ddot{\theta_{1}}\\
+\ddot{\theta_{2}}\\
+i_{n}\\
 \end{bmatrix}
 =
 \begin{bmatrix}
@@ -374,13 +374,13 @@ Mit den zugehörigen numerischen Werten ergibt sich:
 -1 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{bmatrix}
 \begin{bmatrix}
-0 \\
-0\\
-0\\
-0\\
-0\\
-0\\
-0\\
+x \\
+\theta_{1}\\
+\theta_{2}\\
+\dot{x}\\
+\dot{\theta_{1}}\\
+\dot{\theta_{2}}\\
+e\\
 \end{bmatrix}
 +
 \begin{bmatrix}
@@ -392,28 +392,20 @@ Mit den zugehörigen numerischen Werten ergibt sich:
 3.2 \\
 0\\
 \end{bmatrix}
-\begin{bmatrix}
-0 \\
-0\\
-0\\
-0\\
-0\\
-0\\
-0\\
-\end{bmatrix}
+F
 \end{equation*}
 \section{Simulation und Ausgabe}
-Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung XXXX über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
+Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung 4.3 über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
 \begin{lstlisting}
 %----Drei einzelne Diagramme in einem Fenster
 figure(1);
 ax(1) = subplot(3,1,1);
     plot(ax(1),t,y(:,1),'b');
-    title(ax(1),'cart position');     %Titel, Beschriftungen, Kommentare,
-    ylim([-0.1,0.25]);                %andere Farben, andere skalierungen,
-    grid on                           %da kann man sich noch frei austoben.
-ax(2) = subplot(3,1,2);               %relativ einfach verstaendliche 
-    plot(ax(2),t,y(:,2),'r');         %loesung. Ws nicht Laufzeit optimiert
+    title(ax(1),'cart position'); 
+    ylim([-0.1,0.25]);            
+    grid on                       
+ax(2) = subplot(3,1,2);           
+    plot(ax(2),t,y(:,2),'r');     
     title(ax(2),'angle th 1');
     grid on
 ax(3) = subplot(3,1,3);
