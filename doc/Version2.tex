@@ -383,6 +383,38 @@ e\\
 \end{bmatrix}
 F
 \end{equation*}
+
+
+\begin{equation*}
+\begin{bmatrix}
+x\\
+\theta_{1}\\
+\theta_{2}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+\theta_{1}\\
+\theta_{2}\\
+\dot{x}\\
+\dot{\theta_{1}}\\
+\dot{\theta_{2}}\\
+e\\
+\end{bmatrix}
++
+\begin{bmatrix}
+0 \\
+0 \\
+0 \\
+\end{bmatrix}
+F
+\end{equation*}
+
 \section{Simulation und Ausgabe}
 Um die Ergebnisse besser interpretieren zu können wurden die Position $x$, sowie die zwei Winkel $\theta_{1}$ und $\theta_{2}$ in Abbildung 4.3 über die Zeit geplottet. Zudem werden noch die Eigenwerte berechnet und ausgegeben.  
 \begin{lstlisting}
@@ -421,10 +453,10 @@ Wie sich in der Ausgabe erkennen lässt sind die Realteile aller Eigenwerte nega
 %\renewcommand{\thechapter}{}
 \chapter{Implementierung in MalpeSim}
 %\renewcommand{\thechapter}{4}
-Nachdem das vorherige Kapitel ausschließlich der Implementierung in MATLAB gewidment wurde, beschäftigt sich dieses Kapitel nun mit der Umsetzung mittels einer \textit{nicht klassischen}, blockorientierten, grafischen Programmierung in MapleSim. \\
+Nachdem das vorherige Kapitel ausschließlich der Implementierung in MATLAB gewidment wurde, beschäftigt sich dieses nun mit der Umsetzung mittels einer \textit{nicht klassischen}, blockorientierten, grafischen Programmierung in MapleSim. \\
 Wie bereits erwähnt funktioniert die Programmierung in MapleSim grafisch. Es wird zuerst das Modell (in unserem Fall das geregelte mechanische Doppelpendel) im MapleSim GUI nachgebildet. Anschließend können Signale direkt an diesem Model abgegriffen und ins System rückgeführt werden. Dadurch lassen sich selbst komplexe dynamische Systeme aus allen Bereichen der Natur- und Ingeneurswissenschaften vergleichsweise einfach modellieren.
 \section{Modellbildung}
-Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können wurden die Größen aus der Angabe direkt verwendet. Die Materialparamter sind selbstverständlich die, die auch schon in den anderen Kapiteln verwendet wurden. \\
+Da hier keine mathematischen Transformationen mehr nötig waren um das Doppelpendel in MapleSim modellieren zu können, wurden die Größen aus der Angabe direkt verwendet. Die Materialparamter sind selbstverständlich die, die auch schon in den anderen Kapiteln verwendet wurden. \\
 \begin{figure}[h]
 \centering  %Zentrierung
 \label{MapleSimModell}
