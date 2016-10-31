@@ -174,7 +174,7 @@ Damit erhalten wir schließlich die Bewgungsgleichungen in folgender Form:
 \begin{equation}
 M(q)\ddot{q} + f(q,\dot{q}) = 0
 \end{equation}
-Die Ruhelage des Systems finden wir, indem man zuerst die Ableitungen der Lagekoordinaten $\theta_{1}, \theta_{2}$ und $x$ nullsetzt. Anschließend Linearisiert man mithilfe einer Taylorreihe um Ruhelage und streicht alle Glieder höherer Ordnung.
+Die Ruhelage des Systems finden wir, indem man zuerst die Ableitungen der Lagekoordinaten $\theta_{1}, \theta_{2}$ und $x$ nullsetzt. Anschließend linearisieren wir mithilfe einer Taylorreihenentwicklung um die Ruhelage mit Vernachlässigung aller nichtlinearer Glieder.
 %\renewcommand{\thechapter}{}
 \chapter{Implementierung in MATLAB}
 %\renewcommand{\thechapter}{3}
@@ -210,11 +210,11 @@ Außerdem benötigen wir noch die Ortvektoren, sowie diverse Koeffizietenmatrize
 %---- Drehmatrix Stab 1
 T_IK1 = [cos(th1) sin(th1) 0;
         -sin(th1) cos(th1) 0;
-              0          0     1];
+          0          0     1];
 %---- Drehmatrix Stab 2
 T_IK2 = [cos(th2) sin(th2) 0;
         -sin(th2) cos(th2) 0;
-              0          0     1];
+          0          0     1];
 
 %---- Ortsvektoren
 I_r_Sm = [x;0;0];
@@ -247,48 +247,37 @@ I_v_S1 = J_T1*q_p ;
 I_v_S2 = J_T2*q_p ;
 
 %---- kinetische Energie
-T = 1/2*(mm*(I_v_Sm.'*I_v_Sm)+m1*(I_v_S1.'*I_v_S1)+m2*(I_v_S2.'*I_v_S2) ...%Translation
-    +K_om1.'*K1_I_S1*K_om1+K_om2.'*K2_I_S2*K_om2);           %Rotation
-T = simplify(T);                                             %Vereinfachung
+T = 1/2*(mm*(I_v_Sm.'*I_v_Sm)+m1*(I_v_S1.'*I_v_S1)
+		+m2*(I_v_S2.'*I_v_S2)+K_om1.'*K1_I_S1*K_om1
+		+K_om2.'*K2_I_S2*K_om2);        
+T = simplify(T);
 
 %---- potentielle Energie
 V=-(m1*I_r_S1.'+m2*I_r_S2.')*[0 ; -g ; 0];
 
 %---- Ableitungen fuer LAGRANGEsche Gleichung 2. Art
-dTdv = simplify(jacobian(T,q_p).');         %mit transponieren zu Spaltenvektor gemacht
+dTdv = simplify(jacobian(T,q_p).');
 dTdq = simplify(jacobian(T,q).');
 dVdq = simplify(jacobian(V,q).');
 
 %---- Elemente der Bewegungsgleichung M(q)*q_pp + f(q,q_p) = 0
-disp('System-Massenmatrix M')
-M = simplify(jacobian(dTdv,q_p))
-disp('System-Vektorfunktion f')
-f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0])
+M = simplify(jacobian(dTdv,q_p));
+f = simplify(jacobian(dTdv,q)*q_p+dVdq-dTdq-[F;0;0]);
 
 %=============================================================
 %---- Linearisierung um die Gleichgewichtslage:
 %     th1 = 0, th2 = 0, x = 0
-
-disp(' ')
-disp('Elemente der linearisierten Bewegungsgleichung')
-disp('System-Massenmatrix M0')
-M0 = subs(M,{th1, th2, x},{0, 0, 0})
+M0 = subs(M,{th1, th2, x},{0, 0, 0});
 f0 = subs(f,{x, th1, th2, x_p, ...
     th1_p, th2_p},{0, 0, 0, 0, 0, 0});
-disp('Auslenkungs-proportionaler Anteil')
+    
+%Auslenkungs-proportionaler Anteil
 Q = subs(jacobian(f,q),{x, th1, th2, x_p, ...
-    th1_p, th2_p},{0, 0, 0, 0, 0, 0})
-disp('Steifigkeitsmatrix K')
-K = 1/2*(Q+Q.')
-disp('Matrix der nichtkonservativen Kraefte')
-N = 1/2*(Q-Q.')
-disp('gesschw.-proportionaler Anteil')
+    th1_p, th2_p},{0, 0, 0, 0, 0, 0});
+    
+%Gesschwindigkeits-proportionaler Anteil
 P = subs(jacobian(f,q_p),{x, th1, th2, x_p, ...
-    th1_p, th2_p},{0, 0, 0, 0, 0, 0})
-disp('Daempfungsmatrix')
-D = 1/2*(P+P.')
-disp('gyroskopischer Anteil')
-G = 1/2*(P-P.')
+    th1_p, th2_p},{0, 0, 0, 0, 0, 0});
 \end{lstlisting}
 
 \section{Zustandsraumdarstellung und Reglerentwurf}
@@ -316,7 +305,7 @@ C = [1 0 0 0 0 0 0;
 
 D = [0; 0; 0]
 
-
+%Gewichtungsmatrix und Gewichtungsfaktor
 Q=eye(7);
 r=1;
 
@@ -345,10 +334,10 @@ u =0.2*ones(size(t));
 %Input
 [y,t,x]=lsim(sys_cl,u,t);
 \end{lstlisting}
-Die Form der Zustandsraumdartsellung, mit den Matrizen A und B siehe Abbildung(3.2), sieht folgendermaßen aus:\\\\
+Die Form der Zustandsraumdartsellung, mit den Matrizen $A_{c}$ und $B_{c}$ siehe Abbildung(3.2), sieht folgendermaßen aus:\\\\
 \begin{equation}
 \label{eqn:Zustandraumdarstellung}
-\mathbf{\dot{x}}=A \mathbf{x}+B u
+\mathbf{\dot{x}}=A_{c} \mathbf{x}+B_{c} u
 \end{equation}
 \\
 Mit den zugehörigen numerischen Werten ergibt sich:
@@ -365,13 +354,13 @@ i_{n}\\
 \end{bmatrix}
 =
 \begin{bmatrix}
-0 & 0 & 0 & 1 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 1 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 1 & 0 \\
-0 & -0.9 & 0.1 & 0 & 0 & 0 & 0 \\
-0 & 52.8 & -25.5 & 0 & 0 & 0 & 0 \\
-0 & -54.1 & 48.1 & 0 & 0 & 0 & 0 \\
--1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 1 & 0\\
+-13.6504 & 161.0731 & -255.2710 & -16.4349 & -1.8996 & -41.5292 & 4.9296\\
+35.1012 & -363.7374 & 631.1872 & 42.2612 & 4.8846 & 106.7898 & -12.6761\\
+-8.3575 & 44.5622 & -108.2415 & -10.0623 & -1.1630 & -25.4264 & 3.0182\\
+-1 & 0 & 0 & 0 & 0 & 0 & 0\\
 \end{bmatrix}
 \begin{bmatrix}
 x \\
@@ -384,13 +373,13 @@ e\\
 \end{bmatrix}
 +
 \begin{bmatrix}
-0 \\
 0\\
 0\\
-4.9\\
--12.7\\
-3.2 \\
 0\\
+0\\
+0\\
+0\\
+1\\
 \end{bmatrix}
 F
 \end{equation*}
