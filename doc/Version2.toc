@@ -8,4 +8,3 @@
 \contentsline {chapter}{\numberline {5}Implementierung in MalpeSim}{15}{chapter.5}
 \contentsline {section}{\numberline {5.1}Modellbildung}{15}{section.5.1}
 \contentsline {section}{\numberline {5.2}Regelung}{16}{section.5.2}
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{19}{chapter.6}
