@@ -143,7 +143,7 @@ sys_cl = ss(Ac,Bc,Cc,Dc,'statename',states,'inputname',inputs,'outputname',outpu
 t = 0:0.02:8;
 
 %----definition des konstanten 0.2m offsets als Input
-u =0.2*ones(size(t));
+u =50.0*ones(size(t));
 
 %----Simulation des erstellten Systems ueber gegebene Zeit mit bekanntem
 %Input

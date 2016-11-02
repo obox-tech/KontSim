@@ -3,7 +3,7 @@ function Animation(y,t)
 %Animation
 figure('position',[0 0 1000 700]);
 axis(gca,'equal');
-axis([-1.0 1.0 0.0 1.5]);
+axis([-0.0 70.0 0.0 5.0]);
 ax = gca;
 ax.Units = 'pixels';
 pos = ax.Position;
