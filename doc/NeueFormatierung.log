@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2016/dev) (preloaded format=pdflatex 2016.10.22)  2 NOV 2016 16:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2016/dev) (preloaded format=pdflatex 2016.10.22)  2 NOV 2016 16:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Version2.tex
-(./Version2.tex
+**NeueFormatierung.tex
+(./NeueFormatierung.tex
 LaTeX2e <2015/01/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
@@ -757,12 +757,9 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 37.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) (./Version2.aux
-
-LaTeX Warning: Label `SubsystemRegelung' multiply defined.
-
 )
-\openout1 = `Version2.aux'.
+(./NeueFormatierung.aux)
+\openout1 = `NeueFormatierung.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
@@ -780,7 +777,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 98.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 98.
@@ -819,9 +817,9 @@ LaTeX Info: Redefining \ref on input line 98.
 LaTeX Info: Redefining \pageref on input line 98.
 LaTeX Info: Redefining \nameref on input line 98.
 
-(./Version2.out) (./Version2.out)
+(./NeueFormatierung.out) (./NeueFormatierung.out)
 \@outlinefile=\write3
-\openout3 = `Version2.out'.
+\openout3 = `NeueFormatierung.out'.
 
 \c@lstlisting=\count134
 
@@ -892,15 +890,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--100
 [1
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./TU-Logo.p
-ng>] (./Version2.toc)
+ng>] (./NeueFormatierung.toc)
 \tf@toc=\write4
-\openout4 = `Version2.toc'.
+\openout4 = `NeueFormatierung.toc'.
 
  [2
 
-] (./Version2.lof)
+] (./NeueFormatierung.lof)
 \tf@lof=\write5
-\openout5 = `Version2.lof'.
+\openout5 = `NeueFormatierung.lof'.
 
  [3
 
@@ -961,21 +959,21 @@ has been already used, duplicate ignored
 l.149 \newpage
                <./Modell_Doppelpendel.PNG>] [7]
  4.
+<Ortsvektoren.PNG, id=129, 435.12563pt x 362.10281pt>
+File: Ortsvektoren.PNG Graphic file (type png)
+ <use Ortsvektoren.PNG>
+Package pdftex.def Info: Ortsvektoren.PNG used on input line 206.
+(pdftex.def)             Requested size: 170.71652pt x 142.0704pt.
+
 [8
 
-] <Ortsvektoren.PNG, id=147, 435.12563pt x 362.10281pt>
-File: Ortsvektoren.PNG Graphic file (type png)
-
-<use Ortsvektoren.PNG>
-Package pdftex.def Info: Ortsvektoren.PNG used on input line 207.
-(pdftex.def)             Requested size: 284.52756pt x 236.78954pt.
- [9pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1
-}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.246 I_v_Sm 
-             = J_Tm*q_p ; <./Ortsvektoren.PNG>]
+l.209 \newpage
+               <./Ortsvektoren.PNG>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 271.
 
 
@@ -984,7 +982,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 271.
- [10]
+ [9] [10]
 Underfull \hbox (badness 10000) in paragraph at lines 338--339
 
  []
@@ -1004,20 +1002,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--349
 
  []
 
-[11] <Eigenwerte.PNG, id=290, 129.48375pt x 130.23656pt>
+[11] <Eigenwerte.PNG, id=305, 129.48375pt x 130.23656pt>
 File: Eigenwerte.PNG Graphic file (type png)
  <use Eigenwerte.PNG>
 Package pdftex.def Info: Eigenwerte.PNG used on input line 447.
 (pdftex.def)             Requested size: 142.26378pt x 143.10564pt.
 
-<AusgabeMATLAB.png, id=291, 421.575pt x 316.18124pt>
+<AusgabeMATLAB.png, id=306, 421.575pt x 316.18124pt>
 File: AusgabeMATLAB.png Graphic file (type png)
  <use AusgabeMATLAB.png>
 Package pdftex.def Info: AusgabeMATLAB.png used on input line 453.
 (pdftex.def)             Requested size: 426.79134pt x 320.09798pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [12pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
 }) has been already used, duplicate ignored
@@ -1025,14 +1020,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.458 \chapter
-              {Implementierung in MalpeSim} <./Eigenwerte.PNG>] [13pdfTeX warni
-ng (ext4): destination with the same identifier (name{figure.4.3}) has been alr
-eady used, duplicate ignored
+              {Implementierung in MalpeSim}pdfTeX warning (ext4): destination w
+ith the same identifier (name{figure.4.3}) has been already used, duplicate ign
+ored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.458 \chapter
-              {Implementierung in MalpeSim} <./AusgabeMATLAB.png (PNG copy)>]
+              {Implementierung in MalpeSim} <./Eigenwerte.PNG> <./AusgabeMATLAB
+.png (PNG copy)>]
  5.
 
 Overfull \hbox (4.21819pt too wide) in paragraph at lines 460--462
@@ -1040,91 +1036,84 @@ Overfull \hbox (4.21819pt too wide) in paragraph at lines 460--462
 esem Model abge-grif-fen und ins Sys-tem r^^?uckgef^^?uhrt
  []
 
-<MapleSimModel.png, id=321, 547.04375pt x 422.57875pt>
+<MapleSimModel.png, id=316, 547.04375pt x 422.57875pt>
 File: MapleSimModel.png Graphic file (type png)
  <use MapleSimModel.png>
 Package pdftex.def Info: MapleSimModel.png used on input line 467.
-(pdftex.def)             Requested size: 452.9679pt x 349.90848pt.
+(pdftex.def)             Requested size: 341.43306pt x 263.74997pt.
 
+[13
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14
-
-] [15pdfTeX warning (ext4): destination with the same identifier (name{figure.5
-.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.476 ...ung möchten wir uns nun widmen. \newpage
-                                                   <./MapleSimModel.png>]
-<MapleSimRegelungCut.png, id=331, 453.695pt x 469.755pt>
+l.470 \newpage
+               \noindent <./MapleSimModel.png>]
+<MapleSimRegelungCut.png, id=323, 453.695pt x 469.755pt>
 File: MapleSimRegelungCut.png Graphic file (type png)
 
 <use MapleSimRegelungCut.png>
 Package pdftex.def Info: MapleSimRegelungCut.png used on input line 480.
 (pdftex.def)             Requested size: 199.16928pt x 206.21976pt.
 
-Overfull \hbox (13.44958pt too wide) in paragraph at lines 493--501
+Overfull \hbox (13.44958pt too wide) in paragraph at lines 494--502
 \OT1/cmr/m/n/10 Ableitun-gen, sowie einer mo-men-ta-nen Auslenkungs-d-if-ferenz
  des Schlit-tens vom Soll-w-ert, mit der zugeh^^?origen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--501
+Underfull \hbox (badness 10000) in paragraph at lines 494--502
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--501
+Underfull \hbox (badness 10000) in paragraph at lines 494--502
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--501
+Underfull \hbox (badness 10000) in paragraph at lines 494--502
 
  []
 
+[14pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.502 \begin{center}
+                     <./MapleSimRegelungCut.png>]
 <MaplePlot.png, id=337, 1608.0075pt x 946.53625pt>
 File: MaplePlot.png Graphic file (type png)
  <use MaplePlot.png>
 Package pdftex.def Info: MaplePlot.png used on input line 522.
 (pdftex.def)             Requested size: 452.9679pt x 266.63152pt.
- [16pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
-2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.524 \end{figure}
-                   <./MapleSimRegelungCut.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 525.
- [17] [18pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.5.3}) has been already used, duplicate ignored
+ [15pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.525 \end{document}
                      <./MaplePlot.png>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 525.
- (./Version2.aux)
+ (./NeueFormatierung.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 525.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 525.
-Package rerunfilecheck Info: File `Version2.out' has not changed.
+Package rerunfilecheck Info: File `NeueFormatierung.out' has not changed.
 (rerunfilecheck)             Checksum: C9B69256003724F2711CB90E77A4B235;666.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 525.
  ) 
 Here is how much of TeX's memory you used:
- 10672 strings out of 495003
- 149279 string characters out of 6181404
- 474992 words of memory out of 5000000
- 13556 multiletter control sequences out of 15000+600000
+ 10670 strings out of 495003
+ 149409 string characters out of 6181404
+ 502992 words of memory out of 5000000
+ 13557 multiletter control sequences out of 15000+600000
  9320 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,12n,43p,647b,1861s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,43p,655b,1861s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texl
@@ -1143,10 +1132,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/cm-super/sfrm0900.pfb>
-Output written on Version2.pdf (18 pages, 423121 bytes).
+Output written on NeueFormatierung.pdf (15 pages, 421750 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 400 compressed objects within 4 object streams
- 202 named destinations out of 1000 (max. 500000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
+ 199 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

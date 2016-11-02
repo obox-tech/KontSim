@@ -200,13 +200,13 @@ q=[x ; th1 ; th2];              %Minimalkoordinaten
 q_p=[x_p ; th1_p ; th2_p];      %zeitliche Ableitungen
 q_pp=[x_pp ; th1_pp ; th2_pp];
 \end{lstlisting}
-\newpage \noindent
 Außerdem benötigen wir noch die Ortvektoren, sowie diverse Koeffizietenmatrizen um später in die Lagrange'sche Gleichung 2. Art einsetzen zu können. 
-\begin{figure}[h]
+\begin{figure}
 \centering  %Zentrierung
-{\includegraphics[width=10cm]{Ortsvektoren}}
+{\includegraphics[width=6cm]{Ortsvektoren}}
 \caption{Ortsvektoren zu den Gelenk- und Schwerpunkten}
 \end{figure}
+\newpage
 \begin{lstlisting}
 %---- Drehmatrix Stab 1
 T_IK1 = [cos(th1) sin(th1) 0;
@@ -464,7 +464,7 @@ Da hier keine mathematischen Transformationen mehr nötig sind um das Doppelpend
 \begin{figure}[h]
 \centering  %Zentrierung
 \label{MapleSimModell}
-{\includegraphics[width=\textwidth]{MapleSimModel}}
+{\includegraphics[width=12cm]{MapleSimModel}}
 \caption{Modell in MapleSim}
 \end{figure}
 \newpage \noindent
@@ -473,13 +473,14 @@ Da es innerhalb der Standardbibliotheken keine Kompnenten gab, die die gefordert
 \section{Regelung}
 Auch der Bau des Reglers ist vergleichweise einfach. Die nötigen Zustandsgrößen $\theta_{1}$, $\theta_{2}$ und $x$ können direkt abgegriffen und weiterverwendet werden. \\
 $\theta_{1}$ wird dabei unverändert dem Regelungssubsystem übergeben. Für $\theta_{2}$ wird der Winkel, den die beiden Stäbe miteinander einschließen, gemessen und zu $\theta_{1}$ addiert. Der Abstand des Schlittens vom Ursprung des Koordinatensystems $x$ kann auch direkt ausgelesen und weitergeben werden. 
-Wie schon bei den Stäben wurde die Regelung zu einem Subsystem zusammengefasst um eine hohe Übersicht gewährleisten zu können. Dieser Regelung möchten wir uns nun widmen. \newpage
-\begin{figure}
+Wie schon bei den Stäben wurde die Regelung zu einem Subsystem zusammengefasst um eine hohe Übersicht gewährleisten zu können. Dieser Regelung möchten wir uns nun widmen.  \\
+\begin{figure}[!ht]
 \centering  %Zentrierung
 \label{SubsystemRegelung}
 {\includegraphics[width=7cm]{MapleSimRegelungCut}}
 \caption{Subsystem Regelung}
 \end{figure}
+\\
 \noindent
 Wie der Angabe zu entnehmen ist, bedarf es einer Regelung um das instabile System im Gleichgewicht zu halten. Dabei wird die Kraft als Regelung in Form einer Zustandsrückführung, kombiniert mit einer Positionsregelung der Form
 \begin{equation}
@@ -514,12 +515,11 @@ Um die Zuordnung innerhalb des Regelungssubsystems zu vereinfachen wurde noch ei
 \end{tabular}
 \end{center}
 \section{Plot}
-Um auch einen grafischen Vergleich ziehen zu können wurden nochmal die Ergebnisse der Simulation in MapleSim geplottet. 
-
-\begin{figure}[b]
+Um auch einen grafischen Vergleich ziehen zu können wurden nochmal die Ergebnisse der Simulation in MapleSim geplottet. \\
+\begin{figure}[!htb]
 \centering  %Zentrierung
-\label{SubsystemRegelung}
+\label{MapleSim Plot}
 {\includegraphics[width=\textwidth]{MaplePlot}}
-\caption{Subsystem Regelung}
+\caption{MapleSim Plot}
 \end{figure}
 \end{document}

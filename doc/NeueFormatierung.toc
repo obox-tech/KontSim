@@ -4,8 +4,8 @@
 \contentsline {chapter}{\numberline {4}Implementierung in MATLAB}{8}{chapter.4}
 \contentsline {section}{\numberline {4.1}Variablendifinition und Modellbildung}{8}{section.4.1}
 \contentsline {section}{\numberline {4.2}Zustandsraumdarstellung und Reglerentwurf}{10}{section.4.2}
-\contentsline {section}{\numberline {4.3}Simulation und Ausgabe}{12}{section.4.3}
-\contentsline {chapter}{\numberline {5}Implementierung in MalpeSim}{14}{chapter.5}
-\contentsline {section}{\numberline {5.1}Modellbildung}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Regelung}{15}{section.5.2}
-\contentsline {section}{\numberline {5.3}Plot}{17}{section.5.3}
+\contentsline {section}{\numberline {4.3}Simulation und Ausgabe}{11}{section.4.3}
+\contentsline {chapter}{\numberline {5}Implementierung in MalpeSim}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}Modellbildung}{13}{section.5.1}
+\contentsline {section}{\numberline {5.2}Regelung}{14}{section.5.2}
+\contentsline {section}{\numberline {5.3}Plot}{15}{section.5.3}
